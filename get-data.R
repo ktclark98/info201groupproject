@@ -1,13 +1,5 @@
-library(dplyr)
-library(jsonlite)
-library(httr)
-library(maptools)
-library(ggplot2)
-library(rgdal)
-library(RColorBrewer)
-library(ggmap)
-library(OpenStreetMap)
-
+# Make sure you name api-key file "api-key.R"
+# Name the variable "api.key"
 source("api-key.R")
 
 base.url <- "http://apiv3.iucnredlist.org"
@@ -22,42 +14,3 @@ AcessAPI <- function(endpoint) {
   body <- content(list, "text")
   data <- fromJSON(body)
 }
-
-
-
-country.list <- GET(paste0(base.url, "/api/v3/country/list?token=", api.key))
-country <- content(country.list, "text")
-country.data <- fromJSON(country)[[2]] %>% 
-  arrange(country)
-
-# az = azerbaijan. See country.data for all ID's
-az.ep <- paste0("/api/v3/country/getspecies/AZ?token=", api.key)
-response <- GET(paste0(base.url, az.ep))
-body <- content(response, "text")
-az.data <- fromJSON(body)[[3]]
-
-# Testing spatial data
-
-area <- readShapeSpatial("AMPHIBIANS.shp")
-area2 <- readOGR("AMPHIBIANS.shp")
-colors <- brewer.pal(9, "RdPu")
-
-area2 <- fortify(area2) # turns to a dataframe, takes a long ass time
-
-mapImage <- get_map(location = "europe",
-                    color = "color",
-                    source = "google",
-                    maptype = "terrain",
-                    zoom = 6)
-
-ggmap(mapImage) +
-  geom_polygon(aes(x = long,
-                   y = lat,
-                   group = group),
-                   data = area2,
-                   color = colors[9],
-                   fill = colors[6],
-                  alpha = 0.5) +
-  labs(x = "Longitude",
-       y = "Latitude",
-       title = "WORK DAMMIT")
