@@ -9,7 +9,7 @@ base.url <- "http://apiv3.iucnredlist.org"
 
 # Given the endpoint (found on API) will return a list with the data pulled
 # from API. 
-# Note: Make sure endpoint ends at "token= "
+# Note: Make sure endpoint ends at "token="
 # Note: Browse the list returned for the dataframe you want (usually the last element). 
 #       Notice that the other indexes can also be useful info too.
 AccessAPI <- function(endpoint) {
