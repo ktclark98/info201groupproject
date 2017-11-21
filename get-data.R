@@ -1,3 +1,6 @@
+library(httr)
+library(jsonlite)
+
 # Make sure you name api-key file "api-key.R"
 # Name the variable "api.key"
 source("api-key.R")
@@ -9,8 +12,8 @@ base.url <- "http://apiv3.iucnredlist.org"
 # Note: Make sure endpoint ends at "token= "
 # Note: Browse the list returned for the dataframe you want (usually the last element). 
 #       Notice that the other indexes can also be useful info too.
-AcessAPI <- function(endpoint) {
+AccessAPI <- function(endpoint) {
   response <- GET(paste0(base.url, endpoint, api.key))
-  body <- content(list, "text")
+  body <- content(response, "text")
   data <- fromJSON(body)
 }
