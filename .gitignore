@@ -1,4 +1,12 @@
-api-key.R
-test.html
-.Rdata
+# History files
 .Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+
+# api-key
+api-key.R
+
+# test files
+test.html
