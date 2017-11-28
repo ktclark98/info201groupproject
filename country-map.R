@@ -25,6 +25,6 @@ p <- plot_geo(country.count) %>%
   ) %>%
   colorbar(title = 'Species Count') %>%
   layout(
-    title = 'Endangered Species Count by Country',
+    title = 'Critically Endangered Species by Country',
     geo = g
   )
