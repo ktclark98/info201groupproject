@@ -10,23 +10,29 @@
 library(shiny)
 
 # Define UI for application that draws a histogram
-shinyUI(fluidPage(
+my.ui <- navbarPage(
+  "Endangered Species",
   
-  # Application title
-  titlePanel("Information For Species"),
-  
-  # Sidebar with a slider input for number of bins 
-  sidebarLayout(
-    sidebarPanel(
-          textInput("text", label = h3("Text Input"), value = "Enter Species Name Here..."), 
-          checkboxGroupInput("checkGroup",
-                             label = h3("Checkbox Group"),
-                             choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat" )
-          )
-    ),
-    # Show a plot of the generated distribution
-    mainPanel(
-       plotOutput("distPlot")
-    )
+  tabPanel("Species",
+            sidebarLayout(
+               sidebarPanel(
+                 textInput("text", label = h3("Text Input"), value = "Enter Species Name Here..."),
+                 checkboxGroupInput("checkGroup",
+                                    label = h3("Checkbox Group"),
+                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat" )
+                 )
+               ),
+               mainPanel(plotOutput("distPlot"))
+            )
+           ),
+  tabPanel("About Us",
+           sidebarLayout(
+               textOutput("Hello"),
+             mainPanel("HI")
+           )
   )
-))
+  
+)
+
+# Define UI for application that draws a histogram
+shinyUI(my.ui)
