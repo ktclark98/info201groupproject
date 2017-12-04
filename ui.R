@@ -27,8 +27,7 @@ my.ui <- navbarPage(
            ),
   tabPanel("About Us",
            sidebarLayout(
-               textOutput("Hello"),
-             mainPanel("HI")
+             mainPanel("Test")
            )
   )
   
