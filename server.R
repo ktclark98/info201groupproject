@@ -7,19 +7,28 @@
 #    http://shiny.rstudio.com/
 #
 
+library(ggplot2)
 library(shiny)
-
+source("Tab's-Data-Wrangling.R")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    
   output$distPlot <- renderPlot({
     
     # generate bins based on input$bins from ui.R
-    x    <- faithful[, 2] 
-    bins <- seq(min(x), max(x), length.out = input$bins + 1)
+    action <- ConservationMeasures(input$text)
+    threats <- ThreatsForSpecies(input$text)
+    habitat <- HabitatsOfSpecies(input$text)
     
-    # draw the histogram with the specified number of bins
-    hist(x, breaks = bins, col = 'darkgray', border = 'white')
+    word.count <- eval(parse(text = input$checkGroup))
+    
+    word.count %>%
+      arrange(-n)
+      filter (n > 2) %>%
+      ggplot(aes(title, n)) +
+      geom_col() +
+      xlab(NULL) + 
+      coord_flip()
     
   })
   

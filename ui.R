@@ -13,18 +13,17 @@ library(shiny)
 shinyUI(fluidPage(
   
   # Application title
-  titlePanel("Old Faithful Geyser Data"),
+  titlePanel("Information For Species"),
   
   # Sidebar with a slider input for number of bins 
   sidebarLayout(
     sidebarPanel(
-       sliderInput("bins",
-                   "Number of bins:",
-                   min = 1,
-                   max = 50,
-                   value = 30)
+          textInput("text", label = h3("Text Input"), value = "Enter Species Name Here..."), 
+          checkboxGroupInput("checkGroup",
+                             label = h3("Checkbox Group"),
+                             choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat" )
+          )
     ),
-    
     # Show a plot of the generated distribution
     mainPanel(
        plotOutput("distPlot")
