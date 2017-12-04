@@ -26,11 +26,9 @@ my.ui <- navbarPage(
             )
            ),
   tabPanel("About Us",
-           sidebarLayout(
+
              mainPanel("Test")
-           )
   )
-  
 )
 
 # Define UI for application that draws a histogram
