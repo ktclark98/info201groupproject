@@ -13,6 +13,12 @@ library(shiny)
 my.ui <- navbarPage(
   "Endangered Species",
   
+  tabPanel("Location",
+           mainPanel(
+             plotlyOutput("worldMap")
+           )
+  ),
+  
   tabPanel("Species",
             sidebarLayout(
                sidebarPanel(

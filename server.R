@@ -10,6 +10,7 @@
 library(ggplot2)
 library(shiny)
 source("Tab's-Data-Wrangling.R")
+source("country-map.R")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
    
@@ -30,6 +31,10 @@ shinyServer(function(input, output) {
       xlab(NULL) + 
       coord_flip()
     
+  })
+  
+  output$worldMap <- renderPlotly({
+    p
   })
   
 })
