@@ -1,17 +1,10 @@
-#
-# This is the server logic of a Shiny web application. You can run the 
-# application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(ggplot2)
 library(shiny)
+
 source("Tab's-Data-Wrangling.R")
 source("country-map.R")
-# Define server logic required to draw a histogram
+source("region-detect.R")
+
 shinyServer(function(input, output) {
    
   output$distPlot <- renderPlot({
@@ -37,4 +30,14 @@ shinyServer(function(input, output) {
     p
   })
   
+  output$country <- renderPrint({
+    indices <- coords2country(data.frame(input$long, input$lat, stringsAsFactors = FALSE))
+    return(as.character(indices$NAME))
+  })
+  
+  output$country.hist <- renderPrint({
+    indices <- coords2country(data.frame(input$long, input$lat, stringsAsFactors = FALSE))
+    iso2 <- as.character(indices$ISO_A2)
+    
+  })
 })

@@ -1,17 +1,41 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-# 
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
+library(plotly)
+library(knitr)
 
-# Define UI for application that draws a histogram
+# Knit markdown file
+rmdfile <- c("about-us.Rmd")
+sapply(rmdfile, knit, quiet = TRUE)
+
+
 my.ui <- navbarPage(
   "Endangered Species",
+  
+  tabPanel("Your Country",
+           tags$script('
+                $(document).ready(function () {
+                  navigator.geolocation.getCurrentPosition(onSuccess, onError);
+                       
+                  function onError (err) {
+                     Shiny.onInputChange("geolocation", false);
+                  }
+                       
+                  function onSuccess (position) {
+                     setTimeout(function () {
+                        var coords = position.coords;
+                        console.log(coords.latitude + ", " + coords.longitude);
+                        Shiny.onInputChange("geolocation", true);
+                        Shiny.onInputChange("lat", coords.latitude);
+                        Shiny.onInputChange("long", coords.longitude);
+                     }, 1100)
+                  }
+                });
+          '), 
+           
+           mainPanel(
+              h2("Detected Country: "),
+              h3(textOutput('country'))
+           )
+  ),
   
   tabPanel("Location",
            mainPanel(
@@ -31,9 +55,11 @@ my.ui <- navbarPage(
                mainPanel(plotOutput("distPlot"))
             )
            ),
+  
   tabPanel("About Us",
-
-             mainPanel("Test")
+             fluidPage(
+               includeMarkdown("about-us.md")
+             )
   )
 )
 
