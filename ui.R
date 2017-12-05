@@ -34,6 +34,9 @@ my.ui <- navbarPage(
            mainPanel(
               h2("Detected Country: "),
               h3(textOutput('country'))
+              
+             #This line is still buggy :C
+             #,plotlyOutput('country.pie')
            )
   ),
   
