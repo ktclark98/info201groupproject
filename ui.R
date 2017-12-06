@@ -33,10 +33,13 @@ my.ui <- navbarPage(
                  textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
                  checkboxGroupInput("checkGroup",
                                     label = h3("Select Information"),
-                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historial")
+                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
                  )
                ),
-               mainPanel(plotOutput("distPlot"))
+               mainPanel(
+                 plotOutput("distPlot"),
+                 plotOutput("threatPlot")
+               )
             )
            ),
   

@@ -2,9 +2,8 @@ library(ggplot2)
 library(shiny)
 
 source("Tab's-Data-Wrangling.R")
-#source("country-map.R")
-#source("region-detect.R")
-#source("selected-country-data.R")
+source("country-map.R")
+source("selected-country-data.R")
 source("overtime-graphic.R")
 
 shinyServer(function(input, output) {
@@ -27,9 +26,16 @@ shinyServer(function(input, output) {
     #   coord_flip()
     
     # Displays the historial assessment graph if the checkbox is selected 
-    if (input$checkGroup == "historial") {
+    if (input$checkGroup == "historical") {
       HistoricalAssessment(input$text) 
     }
+  })
+  
+  output$threatPlot <- renderPlot({
+    if (input$checkGroup == "threats") {
+      plot <- TreatHistogram(input$text)
+    }
+    plot
   })
   
   output$worldMap <- renderPlotly({

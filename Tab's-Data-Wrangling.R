@@ -38,10 +38,7 @@ ThreatsForSpecies <- function(species.name) {
   return (word.count)
 }
 
-# Example
-# threats.data <- ThreatsForSpecies(scientific.name)
-
-TreatHistogram <- function(name) {
+ThreatHistogram <- function(name) {
   threats.data <- ThreatsForSpecies(name)
   threat <- threats.data %>%
     filter (n > 2) %>%
@@ -49,6 +46,7 @@ TreatHistogram <- function(name) {
     geom_col() +
     xlab(NULL) + 
     coord_flip()
+  return(threat)
 }
 
 # Takes in the name of a species and returns a list of the conservation measures 
@@ -84,9 +82,6 @@ ConservationMeasures <- function(name) {
   return(con.word.count)
 
 }
-
-conservation.data <- ConservationMeasures(scientific.name)
-
 
 HabitatsOfSpecies <- function(name) {
   ending.for.habitats <- paste0("/api/v3/habitats/species/name/", name, "?token=")
