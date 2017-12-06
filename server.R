@@ -20,9 +20,9 @@ shinyServer(function(input, output) {
     } else if (input$checkGroup == "action") {
       plot <- ConservationHistogram(input$text)
     } else if (input$checkGroup == "habitat") {
-      plot <- HabitatHistogram(input$checkGroup)
+      plot <- HabitatHistogram(input$text)
     } else if (input$checkGroup == "historical") {
-        plot <- HistoricalAssessment(input$text) 
+      plot <- HistoricalAssessment(input$text) 
     }
     plot
   })

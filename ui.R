@@ -1,6 +1,7 @@
 library(shiny)
 library(plotly)
 library(knitr)
+library(tidytext)
 # Knit markdown file
 rmdfile <- c("about-us.Rmd")
 sapply(rmdfile, knit, quiet = TRUE)
