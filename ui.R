@@ -11,32 +11,13 @@ my.ui <- navbarPage(
   "Endangered Species",
   
   tabPanel("Your Country",
-           tags$script('
-                $(document).ready(function () {
-                  navigator.geolocation.getCurrentPosition(onSuccess, onError);
-                       
-                  function onError (err) {
-                     Shiny.onInputChange("geolocation", false);
-                  }
-                       
-                  function onSuccess (position) {
-                     setTimeout(function () {
-                        var coords = position.coords;
-                        console.log(coords.latitude + ", " + coords.longitude);
-                        Shiny.onInputChange("geolocation", true);
-                        Shiny.onInputChange("lat", coords.latitude);
-                        Shiny.onInputChange("long", coords.longitude);
-                     }, 1100)
-                  }
-                });
-          '), 
-           
-           mainPanel(
-              h2("Detected Country: "),
-              h3(textOutput('country'))
-              
-             #This line is still buggy :C
-             #,plotlyOutput('country.pie')
+           sidebarLayout(
+             sidebarPanel(
+               textInput("country", label = h3("Enter Your Country's 2 Letter Code:"))
+             ),
+             mainPanel(
+               plotlyOutput('country.pie')
+             )
            )
   ),
   
@@ -47,22 +28,25 @@ my.ui <- navbarPage(
   ),
   
   tabPanel("Species",
-            sidebarLayout(
-               sidebarPanel(
-                 textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
-                 checkboxGroupInput("checkGroup",
-                                    label = h3("Select Information"),
-                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historial")
-                 )
-               ),
-               mainPanel(plotOutput("distPlot"))
-            )
-           ),
+           sidebarLayout(
+             sidebarPanel(
+               textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
+               checkboxGroupInput("checkGroup",
+                                  label = h3("Select Information"),
+                                  choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+               )
+             ),
+             mainPanel(
+               plotOutput("distPlot"),
+               plotOutput("threatPlot")
+             )
+           )
+  ),
   
   tabPanel("About Us",
-             fluidPage(
-               includeMarkdown("about-us.md")
-             )
+           fluidPage(
+             includeMarkdown("about-us.md")
+           )
   )
 )
 
