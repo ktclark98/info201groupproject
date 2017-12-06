@@ -7,38 +7,28 @@ source("selected-country-data.R")
 source("overtime-graphic.R")
 
 shinyServer(function(input, output) {
-   
-  output$distPlot <- renderPlot({
-    
-    # # generate bins based on input$bins from ui.R
-    # action <- ConservationMeasures(input$text)
-    # threats <- ThreatsForSpecies(input$text)
-    # habitat <- HabitatsOfSpecies(input$text)
-    # 
-    # word.count <- eval(parse(text = input$checkGroup))
-    # 
-    # word.count %>%
-    #   arrange(-n)
-    #   filter (n > 2) %>%
-    #   ggplot(aes(title, n)) +
-    #   geom_col() +
-    #   xlab(NULL) + 
-    #   coord_flip()
-    
-    # Displays the historial assessment graph if the checkbox is selected 
-    if (input$checkGroup == "historical") {
-      HistoricalAssessment(input$text) 
-    }
-  })
+  # output$distPlot <- renderPlot({
+  #   # Displays the historial assessment graph if the checkbox is selected 
+  #   if (input$checkGroup == "historical") {
+  #     HistoricalAssessment(input$text) 
+  #   }
+  # })
   
-  output$threatPlot <- renderPlot({
+  output$histPlot <- renderPlot({
     if (input$checkGroup == "threats") {
-      plot <- TreatHistogram(input$text)
+      plot <- ThreatHistogram(input$text)
+    } else if (input$checkGroup == "action") {
+      plot <- ConservationHistogram(input$text)
+    } else if (input$checkGroup == "habitat") {
+      plot <- HabitatHistogram(input$text)
+    } else if (input$checkGroup == "historical") {
+      plot <- HistoricalAssessment(input$text) 
     }
     plot
   })
   
   output$worldMap <- renderPlotly({
+    
     p
   })
   
@@ -47,3 +37,5 @@ shinyServer(function(input, output) {
     GetPie(iso2)
   })
 })
+
+shinyUI(my.ui)

@@ -45,7 +45,7 @@ my.ui <- navbarPage(
   
   tabPanel("About Us",
            fluidPage (
-             includeMarkdown("about-us.md")
+             includeMarkdown("about-us.Rmd")
            )
   )
 )

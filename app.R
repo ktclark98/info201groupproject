@@ -11,13 +11,14 @@ source("selected-country-data.R")
 source("overtime-graphic.R")
 
 ui <- dashboardPage(
+  skin = "purple",
   dashboardHeader(title = "Endangered Species"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Your Country", tabName = "country", icon = icon("th")),
-      menuItem("Location", tabName = "location", icon = icon("th")),
-      menuItem("Species", tabName = "species", icon = icon("th")),
-      menuItem("About", tabName = "about", icon = icon("th"))
+      menuItem("Your Country", tabName = "country", icon = icon("map-marker")),
+      menuItem("Location", tabName = "location", icon = icon("map")),
+      menuItem("Species", tabName = "species", icon = icon("paw")),
+      menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
   ),
   dashboardBody(
@@ -57,8 +58,8 @@ ui <- dashboardPage(
                                      )
                 ),
                 box(
-                  plotOutput("distPlot", height = 250),
-                  plotOutput("threatPlot", height = 250)
+                  #plotOutput("distPlot", height = 250),
+                  plotOutput("histPlot")
                 )
               )
       ),
@@ -73,43 +74,34 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  output$country.pie <- renderPlotly({
-    iso2 <- as.character(input$country)
-    GetPie(iso2)
+  # output$distPlot <- renderPlot({
+  #   # Displays the historial assessment graph if the checkbox is selected 
+  #   if (input$checkGroup == "historical") {
+  #     HistoricalAssessment(input$text) 
+  #   }
+  # })
+  
+  output$histPlot <- renderPlot({
+    if (input$checkGroup == "threats") {
+      plot <- ThreatHistogram(input$text)
+    } else if (input$checkGroup == "action") {
+      plot <- ConservationHistogram(input$text)
+    } else if (input$checkGroup == "habitat") {
+      plot <- HabitatHistogram(input$text)
+    } else if (input$checkGroup == "historical") {
+      plot <- HistoricalAssessment(input$text) 
+    }
+    plot
   })
   
   output$worldMap <- renderPlotly({
+    
     p
   })
   
-  output$distPlot <- renderPlot({
-    
-    # # generate bins based on input$bins from ui.R
-    # action <- ConservationMeasures(input$text)
-    # threats <- ThreatsForSpecies(input$text)
-    # habitat <- HabitatsOfSpecies(input$text)
-    # 
-    # word.count <- eval(parse(text = input$checkGroup))
-    # 
-    # word.count %>%
-    #   arrange(-n)
-    #   filter (n > 2) %>%
-    #   ggplot(aes(title, n)) +
-    #   geom_col() +
-    #   xlab(NULL) + 
-    #   coord_flip()
-    
-    # Displays the historial assessment graph if the checkbox is selected 
-    if (input$checkGroup == "historical") {
-      HistoricalAssessment(input$text) 
-    }
-  })
-  
-  output$threatPlot <- renderPlot({
-    if (input$checkGroup == "threats") {
-      plot <- TreatHistogram(input$text)
-    }
-    plot
+  output$country.pie <- renderPlotly({
+    iso2 <- as.character(input$country)
+    GetPie(iso2)
   })
 }
 
