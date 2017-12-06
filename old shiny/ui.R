@@ -9,7 +9,7 @@ sapply(rmdfile, knit, quiet = TRUE)
 my.ui <- navbarPage(
   
   "Endangered Species",
-
+  
   tabPanel("Your Country",
            sidebarLayout(
              sidebarPanel(
@@ -20,7 +20,7 @@ my.ui <- navbarPage(
              )
            )
   ),
-
+  
   tabPanel("Location",
            mainPanel(
              plotlyOutput("worldMap")
@@ -28,27 +28,12 @@ my.ui <- navbarPage(
   ),
   
   tabPanel("Species",
-<<<<<<< HEAD
-
-            sidebarLayout(
-               sidebarPanel(
-                 textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
-                 checkboxGroupInput("checkGroup",
-                                    label = h3("Select Information"),
-                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
-                 )
-               ),
-               mainPanel(
-                 plotOutput("distPlot"),
-                 plotOutput("threatPlot")
-=======
            sidebarLayout(
              sidebarPanel(
                textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
                selectInput("checkGroup",
-                                  label = h3("Select Information"),
-                                  choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
->>>>>>> 7842e927e1e1dc0b1e12c15cd6380b7408d5fc27
+                           label = h3("Select Information"),
+                           choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
                )
              ),
              mainPanel(
@@ -59,11 +44,7 @@ my.ui <- navbarPage(
   ),
   
   tabPanel("About Us",
-<<<<<<< HEAD
-           fluidPage(
-=======
            fluidPage (
->>>>>>> 7842e927e1e1dc0b1e12c15cd6380b7408d5fc27
              includeMarkdown("about-us.md")
            )
   )
