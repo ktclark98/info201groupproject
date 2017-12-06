@@ -9,7 +9,7 @@ sapply(rmdfile, knit, quiet = TRUE)
 my.ui <- navbarPage(
   
   "Endangered Species",
-
+  
   tabPanel("Your Country",
            sidebarLayout(
              sidebarPanel(
@@ -20,7 +20,7 @@ my.ui <- navbarPage(
              )
            )
   ),
-
+  
   tabPanel("Location",
            mainPanel(
              plotlyOutput("worldMap")
@@ -32,8 +32,8 @@ my.ui <- navbarPage(
              sidebarPanel(
                textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
                selectInput("checkGroup",
-                                  label = h3("Select Information"),
-                                  choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+                           label = h3("Select Information"),
+                           choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
                )
              ),
              mainPanel(
@@ -44,7 +44,7 @@ my.ui <- navbarPage(
   
   tabPanel("About Us",
            fluidPage (
-             includeMarkdown("about-us.md")
+             includeMarkdown("about-us.Rmd")
            )
   )
 )
