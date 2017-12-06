@@ -8,7 +8,7 @@ library(ggplot2)
 
 scientific.name <- "Loxodonta Africana"
 
-
+my.stop.words <- data_frame(word = c("&", "-", "and", "is", "or", "level"))
 
 # Takes in a the name of the species and creates a data table that contains the
 
@@ -38,7 +38,7 @@ ThreatsForSpecies <- function(species.name) {
   
   first.data <- data.frame(split.vector[1])
   
-  names(first.data) <- "title"
+  names(first.data) <- "word"
   
   
   
@@ -52,7 +52,7 @@ ThreatsForSpecies <- function(species.name) {
     
     added.data <- data.frame(split.vector2[i])
     
-    names(added.data) <- "title"
+    names(added.data) <- "word"
     
     newdf <- data.frame(rbind(as.matrix(added.data), as.matrix(first.data)))
     
@@ -64,15 +64,15 @@ ThreatsForSpecies <- function(species.name) {
   
   word.count <- newdf %>%
     
-    group_by(title) %>%
+    group_by(word) %>%
     
     summarise(n = n())
   
-  word.count <- word.count %>%
+  no.stop.word.count <- word.count %>%
     
-    arrange(-n)
+    anti_join(my.stop.words, by="word")
   
-  return (word.count)
+  return (no.stop.word.count)
   
 }
 
@@ -84,15 +84,17 @@ ThreatHistogram <- function(name) {
   
   threat <- threats.data %>%
     
-    filter (n > 2) %>%
+    filter(n > 2) %>%
     
-    ggplot(aes(title, n)) +
+    ggplot(aes(word, n)) +
     
     geom_col() +
     
     xlab(NULL) + 
     
-    coord_flip()
+    ggtitle("Most Common Words \n Describing Threats") +
+    
+    labs(x = "Words", y = "frequency")
   
   return(threat)
   
@@ -126,7 +128,7 @@ ConservationMeasures <- function(name) {
   
   con.first.data <- data.frame(con.split.vector[1])
   
-  names(con.first.data) <- "title"
+  names(con.first.data) <- "word"
   
   
   
@@ -140,7 +142,7 @@ ConservationMeasures <- function(name) {
     
     con.added.data <- data.frame(con.split.vector2[i])
     
-    names(con.added.data) <- "title"
+    names(con.added.data) <- "word"
     
     newdf <- data.frame(rbind(as.matrix(con.added.data), as.matrix(con.first.data)))
     
@@ -152,7 +154,7 @@ ConservationMeasures <- function(name) {
   
   con.word.count <- newdf %>%
     
-    group_by(title) %>%
+    group_by(word) %>%
     
     summarise(n = n())
   
@@ -160,7 +162,11 @@ ConservationMeasures <- function(name) {
     
     arrange(-n)
   
-  return(con.word.count)
+  no.stop.count <- con.word.count %>%
+    
+    anti_join(my.stop.words, by="word")
+  
+  return(no.stop.count)
   
   
   
@@ -174,13 +180,15 @@ ConservationHistogram <- function(name) {
     
     filter (n > 2) %>%
     
-    ggplot(aes(title, n)) +
+    ggplot(aes(word, n)) +
     
     geom_col() +
     
     xlab(NULL) + 
     
-    coord_flip()
+   ggtitle("Most Common Words \n Describing Conservation Efforts") +
+    
+    labs(x = "Words", y = "frequency")
   
   return(conservation)
   
@@ -207,7 +215,7 @@ HabitatsOfSpecies <- function(name) {
   
   hab.first.data <- data.frame(hab.split.vector[1])
   
-  names(hab.first.data) <- "title"
+  names(hab.first.data) <- "word"
   
   
   
@@ -221,7 +229,7 @@ HabitatsOfSpecies <- function(name) {
     
     hab.added.data <- data.frame(hab.split.vector2[i])
     
-    names(hab.added.data) <- "title"
+    names(hab.added.data) <- "word"
     
     newdf <- data.frame(rbind(as.matrix(hab.added.data), as.matrix(hab.first.data)))
     
@@ -233,15 +241,18 @@ HabitatsOfSpecies <- function(name) {
   
   hab.word.count <- newdf %>%
     
-    group_by(title) %>%
+    group_by(word) %>%
     
     summarise(n = n())
   
   hab.word.count <- hab.word.count %>%
     
     arrange(-n)
+  no.stop.hab.count <- hab.word.count %>%
+    
+    anti_join(my.stop.words, by="word")
   
-  return (hab.word.count)
+  return (no.stop.hab.count)
   
 }
 
@@ -253,13 +264,15 @@ HabitatHistogram <- function(name) {
     
     filter (n > 2) %>%
     
-    ggplot(aes(title, n)) +
+    ggplot(aes(word, n)) +
     
     geom_col() +
     
     xlab(NULL) + 
     
-    coord_flip()
+    ggtitle("Most Common Words \n Describing Habitats") +
+    
+    labs(x = "Words", y = "frequency")
   
   return(habitat)
   
