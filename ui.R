@@ -30,10 +30,10 @@ my.ui <- navbarPage(
   tabPanel("Species",
             sidebarLayout(
                sidebarPanel(
-                 textInput("text", label = h3("Text Input"), value = "Enter Species Name Here..."),
+                 textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
                  checkboxGroupInput("checkGroup",
-                                    label = h3("Checkbox Group"),
-                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat" )
+                                    label = h3("Select Information"),
+                                    choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historial")
                  )
                ),
                mainPanel(plotOutput("distPlot"))
