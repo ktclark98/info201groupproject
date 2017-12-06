@@ -37,7 +37,6 @@ my.ui <- navbarPage(
                )
              ),
              mainPanel(
-               #plotOutput("distPlot"),
                plotOutput("histPlot")
              )
            )
