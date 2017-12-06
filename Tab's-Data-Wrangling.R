@@ -38,15 +38,16 @@ ThreatsForSpecies <- function(species.name) {
   return (word.count)
 }
 
-# Example
-threats.data <- ThreatsForSpecies(scientific.name)
-
-threat <- threats.data %>%
-  filter (n > 2) %>%
-  ggplot(aes(title, n)) +
-  geom_col() +
-  xlab(NULL) + 
-  coord_flip()
+ThreatHistogram <- function(name) {
+  threats.data <- ThreatsForSpecies(name)
+  threat <- threats.data %>%
+    filter (n > 2) %>%
+    ggplot(aes(title, n)) +
+    geom_col() +
+    xlab(NULL) + 
+    coord_flip()
+  return(threat)
+}
 
 # Takes in the name of a species and returns a list of the conservation measures 
 # being taken to help the species. 
@@ -82,9 +83,6 @@ ConservationMeasures <- function(name) {
 
 }
 
-conservation.data <- ConservationMeasures(scientific.name)
-
-
 HabitatsOfSpecies <- function(name) {
   ending.for.habitats <- paste0("/api/v3/habitats/species/name/", name, "?token=")
   habitats <- AccessAPI(ending.for.habitats)
@@ -118,4 +116,5 @@ HabitatsOfSpecies <- function(name) {
 habitats.data <- HabitatsOfSpecies(scientific.name)
 
 # Histogram of most common words
+
 # Word Cloud?
