@@ -30,7 +30,7 @@ my.ui <- navbarPage(
            sidebarLayout(
              sidebarPanel(
                textInput("text", label = h3("Species"), value = "Enter Species Name Here..."),
-               checkboxGroupInput("checkGroup",
+               selectInput("checkGroup",
                                   label = h3("Select Information"),
                                   choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
                )
