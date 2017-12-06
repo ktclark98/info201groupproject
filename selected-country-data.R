@@ -2,6 +2,8 @@ library(dplyr)
 library(plotly)
 
 source("get-data.R")
+
+categ.code <- read.csv("data/endanger-code.csv", stringsAsFactors = FALSE)
 iso.codes <- read.csv("data/iso-codes.csv", stringsAsFactors = FALSE)
 
 # IDEA: Maybe ranking compared to other countries of how many threated species are in country
@@ -14,7 +16,7 @@ GetPie <- function(country.id) {
                          textposition = 'inside',
                          textinfo = 'label+percent',
                          hoverinfo = 'text',
-                         text = ~paste0(code, ": ", total, " species")) %>% 
+                         text = ~paste0(name, ": ", total, " species")) %>% 
     layout(title = "Count of Threatened Species Category",
            xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
            yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
@@ -41,14 +43,8 @@ GetCount <- function(country.id) {
   names(df) <- c("category", "total")
   counts <- rbind(counts, df)
   
-  # Calculates and add a percent column to the dataframe
-  percent <- as.integer(counts$total)
-  total <- sum(percent)
-  percent <- (percent/total)*100
-  counts$percent <- percent
-  
-  counts$code <- c("Critically Endangered", "Data Deficient", "Endangered", "Extinct in the Wild",
-                   "Extinct", "Least Concern", "Near Threatened", "Vulnerable", "Low Risk")
+  # Puts in formatted names for the categories
+  counts <- left_join(counts, categ.code, by = "category")
   return(counts)
 }
 

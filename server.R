@@ -31,16 +31,8 @@ shinyServer(function(input, output) {
     p
   })
   
-  indices <- reactive({
-    data <- coords2country(data.frame(input$long, input$lat, stringsAsFactors = FALSE))
-  })
-  
-  output$country <- renderPrint({
-    as.character(indices()$NAME)
-  })
-  
-  output$country.pie <- renderPrint({
-    iso2 <- as.character(indices()$ISO_A2)
-    return(GetPie(iso2))
+  output$country.pie <- renderPlotly({
+    iso2 <- as.character(input$country)
+    GetPie(iso2)
   })
 })

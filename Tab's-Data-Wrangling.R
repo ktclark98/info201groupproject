@@ -39,14 +39,17 @@ ThreatsForSpecies <- function(species.name) {
 }
 
 # Example
-threats.data <- ThreatsForSpecies(scientific.name)
+# threats.data <- ThreatsForSpecies(scientific.name)
 
-threat <- threats.data %>%
-  filter (n > 2) %>%
-  ggplot(aes(title, n)) +
-  geom_col() +
-  xlab(NULL) + 
-  coord_flip()
+TreatHistogram <- function(name) {
+  threats.data <- ThreatsForSpecies(name)
+  threat <- threats.data %>%
+    filter (n > 2) %>%
+    ggplot(aes(title, n)) +
+    geom_col() +
+    xlab(NULL) + 
+    coord_flip()
+}
 
 # Takes in the name of a species and returns a list of the conservation measures 
 # being taken to help the species. 
@@ -118,4 +121,5 @@ HabitatsOfSpecies <- function(name) {
 habitats.data <- HabitatsOfSpecies(scientific.name)
 
 # Histogram of most common words
+
 # Word Cloud?
