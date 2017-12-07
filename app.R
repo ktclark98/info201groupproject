@@ -70,8 +70,8 @@ ui <- dashboardPage(
                   box(
                     plotOutput("histPlot")
                   )
-
                 )
+              )
       ),
       
       tabItem(tabName = "about",
@@ -123,4 +123,3 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
-
