@@ -10,6 +10,7 @@ source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
 source("get-image.R")
+source("url-and-common-name.R")
 
 ui <- dashboardPage(
   skin = "purple",
