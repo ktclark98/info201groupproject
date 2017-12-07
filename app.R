@@ -9,6 +9,7 @@ source("Tab's-Data-Wrangling.R")
 source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
+source("get-image.R")
 
 ui <- dashboardPage(
   skin = "purple",
@@ -62,6 +63,9 @@ ui <- dashboardPage(
                   box(
                     #plotOutput("distPlot", height = 250),
                     plotOutput("histPlot")
+                  ),
+                  box(
+                    htmlOutput("picture")
                   )
                 )
       ),
@@ -76,13 +80,6 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  # output$distPlot <- renderPlot({
-  #   # Displays the historial assessment graph if the checkbox is selected 
-  #   if (input$checkGroup == "historical") {
-  #     HistoricalAssessment(input$text) 
-  #   }
-  # })
-  
   output$histPlot <- renderPlot({
     if (input$checkGroup == "threats") {
       plot <- ThreatHistogram(input$text)
@@ -96,8 +93,13 @@ server <- function(input, output) {
     plot
   })
   
+  output$picture <- renderText({
+    src <- GetImageURL(input$text)
+    c('<img src="', src, '" width="300px" height="300px">')  
+    # <img src="url", height=300,>
+  })
+  
   output$worldMap <- renderPlotly({
-    
     p
   })
   

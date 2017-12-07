@@ -28,7 +28,6 @@ shinyServer(function(input, output) {
   })
   
   output$worldMap <- renderPlotly({
-    
     p
   })
   
