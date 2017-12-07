@@ -51,22 +51,6 @@ ui <- dashboardPage(
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
-<<<<<<< HEAD
-                box(
-                  textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
-                ),
-                box(
-                  checkboxGroupInput("checkGroup",
-                                     label = h3("Select Information"),
-                                     choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
-                                     )
-                ),
-                box(
-                  #plotOutput("distPlot", height = 250),
-                  plotOutput("histPlot")
-                )
-              )
-=======
                   box(
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
@@ -80,7 +64,6 @@ ui <- dashboardPage(
                     plotOutput("histPlot")
                   )
                 )
->>>>>>> 9a5489b8312ce5ffdaa1f0a16e9e042d9b50fbf5
       ),
       
       tabItem(tabName = "about",
