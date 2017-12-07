@@ -62,6 +62,7 @@ ui <- dashboardPage(
                   box(
                     plotOutput("histPlot")
                   )
+
                 )
       ),
       
@@ -89,7 +90,6 @@ server <- function(input, output) {
   })
   
   output$worldMap <- renderPlotly({
-    
     p
   })
   
