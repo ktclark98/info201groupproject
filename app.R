@@ -16,7 +16,7 @@ ui <- dashboardPage(
   dashboardHeader(title = "Endangered Species"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Your Country", tabName = "country", icon = icon("map-marker")),
+      menuItem("Your Country", tabName = "country", icon = icon("globe")),
       menuItem("Location", tabName = "location", icon = icon("map")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
@@ -52,9 +52,11 @@ ui <- dashboardPage(
               h2("Species"),
               fluidRow(
                   box(
+                    status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
                   box(
+                    status = "primary",
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
                                 choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
@@ -62,15 +64,17 @@ ui <- dashboardPage(
                   ),
                   
                   box(
+                    title = "Picture", status = "info", solidHeader = TRUE,
                     htmlOutput("picture"),
-                    uiOutput("common.name"),
                     uiOutput("url")
                   ),
                   
                   box(
+                    title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
                     plotOutput("histPlot")
-                  )
-                )
+                  ),
+                  
+                  valueBoxOutput("nameBox")
               )
       ),
       
@@ -116,8 +120,11 @@ server <- function(input, output) {
     tagList("Link to more information:", GetUrl(input$text))
   })
   
-  output$common.name <- renderText({
-    paste("Common Name: ", GetCommonName(input$text))
+  output$nameBox <- renderValueBox({
+    valueBox(
+      paste0(GetCommonName(input$text)), "Common Name", icon = icon("bug"),
+      color = "purple"
+    )
   })
   
 }
