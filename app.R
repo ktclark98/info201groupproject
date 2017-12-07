@@ -17,12 +17,13 @@ ui <- dashboardPage(
                   tags$li(class="dropdown",
                           tags$a(href="https://github.com/ktclark98/info201groupproject",
                                  tags$img(height = "20px",
-                                          src="github-logo.png")
+                                          src="github.png")
                                  )
                           )
                   ),
   dashboardSidebar(
     sidebarMenu(
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("database")),
       menuItem("Country", tabName = "country", icon = icon("map-marker")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
@@ -31,8 +32,43 @@ ui <- dashboardPage(
   dashboardBody(
     tabItems(
       # First tab content
+      tabItem(tabName = "dashboard",
+              fluidPage(
+                title="dash",
+                fluidRow(
+                  valueBox(species.count, "Total Species", icon=icon("bug"), width=3),
+                  valueBox(country.count, "Total Countries", icon=icon("globe"), width=3)
+                ),
+                fluidRow(
+                  box(
+                    style="font-size:120%", background = "light-blue",
+                    h2("Data Source"),
+                    p("Our data is obtained from the", a(strong("IUCN Red List API"), href="http://apiv3.iucnredlist.org/",
+                                                         target="_blank", style="color :white; font-weight : bold;"),
+                      ". The IUCN, or International Union for Conservation of Nature is an international organization established
+                      in 1948 with the mission to help societies throughout the world conserve the integrity and diversity of nature. 
+                      They are most known for their Red List of Threatened Species"
+                    )
+                  )
+                )
+              )
+      ),
       tabItem(tabName = "country",
               h2("Country"), 
+              fluidRow(
+                box(
+                  style = "font-size: 120%", background = "light-blue", 
+                  solidHeader = FALSE, collapsible = FALSE,
+                  h2("Notes"),
+                  p("For the country page, we put our focus on showing visitors what levels 
+                    endangerment are for any country. The pie chart shows 
+                    the percentage of animals in each category depending on the country input. 
+                    For example, if you put in US for the United States, it 
+                    shows that 68% of the accounted species are under the least concern of endangerment, 
+                    while only around 3% are considered extinct. 
+                    We have also constructed a map that shows all the countries at once for any given endangerment level")
+                )
+              ),
               fluidRow(
                 box(
                   textInput("country", label = h3("Enter Country's 2 Letter Code:"), value = "US")
@@ -55,12 +91,7 @@ ui <- dashboardPage(
 
                 box(
                   plotlyOutput("worldMap", height = 500)
-                ),
-                box(
-                  title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
-                  htmlOutput("paragraphcountry")
                 )
-
               )
       ),
       
@@ -68,30 +99,30 @@ ui <- dashboardPage(
               h2("Species"),
               fluidRow(
                 valueBoxOutput("nameBox"),
-                  box(
-                    status = "primary",
-                    textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
-                  ),
+                box(
+                  status = "primary",
+                  textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
+                ),
+              
+                tabBox(
+                  title="Graphs",
+                  id = "tabGraphs",
+                  tabPanel("Historical Assessment", plotOutput("historical")),
+                  tabPanel("Habitat", plotOutput("habitat")),
+                  tabPanel("Threats", plotOutput("threat")),
+                  tabPanel("Conservation Actions", plotOutput("action"))
+                ),
+              
+                box(
+                  title = "Picture", status = "info", solidHeader = TRUE,
+                  htmlOutput("picture"),
+                  uiOutput("url")
+                ),
                 
-                  tabBox(
-                    title="Graphs",
-                    id = "tabGraphs",
-                    tabPanel("Historical Assessment", plotOutput("historical")),
-                    tabPanel("Habitat", plotOutput("habitat")),
-                    tabPanel("Threats", plotOutput("threat")),
-                    tabPanel("Conservation Actions", plotOutput("action"))
-                  ),
-                
-                  box(
-                    title = "Picture", status = "info", solidHeader = TRUE,
-                    htmlOutput("picture"),
-                    uiOutput("url")
-                  ),
-                  
-                  box(
-                    title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
-                    htmlOutput("paragraph")
-                  )
+                box(
+                  title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
+                  htmlOutput("paragraph")
+                )
               )
       ),
       
@@ -163,7 +194,6 @@ server <- function(input, output) {
       color = "purple"
     )
   })
-  
 }
 
 shinyApp(ui, server)
