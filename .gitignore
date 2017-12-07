@@ -10,3 +10,6 @@ api-key.R
 
 # test files
 test.html
+
+# mac files
+.DS_Store
