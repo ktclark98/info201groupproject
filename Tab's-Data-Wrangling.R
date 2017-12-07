@@ -88,7 +88,7 @@ ThreatHistogram <- function(name) {
     
     ggplot(aes(word, n)) +
     
-    geom_col() +
+    geom_col(fill = "#ff6666") + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   
     xlab(NULL) + 
   
@@ -182,7 +182,7 @@ ConservationHistogram <- function(name) {
     
     ggplot(aes(word, n)) +
     
-    geom_col() +
+    geom_col(fill = "#80bfff") + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
     
     xlab(NULL) + 
     
@@ -266,7 +266,7 @@ HabitatHistogram <- function(name) {
     
     ggplot(aes(word, n)) +
     
-    geom_col() +
+    geom_col(fill = "#269900") + theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
     
     xlab(NULL) + 
     
