@@ -119,17 +119,18 @@ ui <- dashboardPage(
                     a histogram is created. This histogram is used because our data sets for these topics gave us sentences as data describing
                     the issues. The histogram shows the most commonly occurring words or phrases that account for that topic. This can give
                     the readers ideas about the most prevalent issues for action that needs to be made for conservation, the general habitats
-                    of the animal, and the things threatening the animal. We also have created a line plot to show the how the endangerment
+                    of the animal, and the things threatening the animal. This histogram isn't always 100% effective because the most common words
+                    aren't always the most applicable to the topic.We also have created a line plot to show the how the endangerment
                     levels for the animal has changed over the years.")
-                )
+                ), 
+                valueBoxOutput("nameBox", width=4),
+                valueBoxOutput("countryBox", width=4)
               ),
               fluidRow(
-                box(
-                  status = "primary",
-                  textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana"), width=6
-                ),
-                valueBoxOutput("nameBox", width=3),
-                valueBoxOutput("countryBox", width=3)
+                 box(
+                   status = "primary",
+                   textInput("text", label = h3("Enter Species' Scientific Name below"), value = "Loxodonta africana"), width=6
+                 )
               ),
               fluidRow(
                 tabBox(
@@ -139,8 +140,7 @@ ui <- dashboardPage(
                   tabPanel("Habitat", plotOutput("habitat")),
                   tabPanel("Threats", plotOutput("threat")),
                   tabPanel("Conservation Actions", plotOutput("action"))
-                ),
-              
+                ), 
                 box(
                   title = "Picture", solidHeader = TRUE, status ="primary",
                   htmlOutput("picture"),
