@@ -13,10 +13,17 @@ source("url-and-common-name.R")
 
 ui <- dashboardPage(
   skin = "purple",
-  dashboardHeader(title = "Endangered Species"),
+  dashboardHeader(title = "Endangered Species",
+                  tags$li(class="dropdown",
+                          tags$a(href="https://github.com/ktclark98/info201groupproject",
+                                 tags$img(height = "20px",
+                                          src="github-logo.png")
+                                 )
+                          )
+                  ),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Your Country", tabName = "country", icon = icon("map-marker")),
+      menuItem("Country", tabName = "country", icon = icon("map-marker")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
@@ -60,20 +67,12 @@ ui <- dashboardPage(
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
-                
                 valueBoxOutput("nameBox"),
-                
                   box(
                     status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
-                  box(
-                    status = "primary",
-                    selectInput("checkGroup",
-                                label = h3("Select Information"),
-                                choices = list("Threats" = "threats", "Actions" = "action", "Habitat" = "habitat", "Historical Assessment" = "historical")
-                    )
-                  ),
+                
                   tabBox(
                     title="Graphs",
                     id = "tabGraphs",
