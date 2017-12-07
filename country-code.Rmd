@@ -1,0 +1,14 @@
+---
+title: "Country Codes"
+output: html_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(dplyr)
+iso.codes <- read.csv("data/iso-code2.csv", stringsAsFactors = FALSE)
+iso.codes <- iso.codes %>%
+  select(ID, Name)
+kable(iso.codes, format="markdown")
+```
+

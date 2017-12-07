@@ -4,12 +4,19 @@ output: html_document
 ---
 
 # About Us
-The purpose of this project was to see trends in endangered species. This accounts for what type of threats they have, what kind of habitats the live in, their change overtime, and many other characteristics. Using this information, we wanted any person visiting our page to get the knowledge of some conservation measures that they can follow to help save these animals. The source of the data we used was [IUCN RedList](http://apiv3.iucnredlist.org/api/v3/docs). 
 
-This project was created by **Tabitha Anderson, Kateka Seth, Katie Clark, and Larissa Ho.** 
+This project was created by **Tabitha Anderson, Kateka Seth, Katie Clark, and Larissa Ho.** Listed below are our favorite endangered animals. Give them a search!
 
+Tabitha: Loxodonta Africana (African Elephant) </br>
+![](https://i.pinimg.com/236x/c8/3d/b0/c83db012df4d0ee283502bd997b2ded7--bull-bull-bull-elephant.jpg) 
 
-![](https://i.pinimg.com/236x/c8/3d/b0/c83db012df4d0ee283502bd997b2ded7--bull-bull-bull-elephant.jpg)  ![](https://i.pinimg.com/236x/e9/ce/7f/e9ce7f10ce799a6f8e3f6f6368505a37--mantis-shrimp-harlequin.jpg)
-![](https://i.pinimg.com/236x/c6/93/15/c69315e28ebd934c0a380baec729cf5e--river-otter-sea-otter.jpg)  ![](https://i.pinimg.com/236x/93/fa/c0/93fac00692c54e9df0327528967f4741--baby-pandas-giant-pandas.jpg)
+Kateka: Eudyptes chrysolophus  (Macaroni Penguin) </br>
+![](https://i.pinimg.com/236x/db/ee/4e/dbee4e9f6eff142915fa9a162746eb0a--information-about-penguins-penguin-pictures.jpg)
+
+Katie: Enhydra lutris (Sea otter) </br>
+![](https://i.pinimg.com/236x/c6/93/15/c69315e28ebd934c0a380baec729cf5e--river-otter-sea-otter.jpg)
+
+Larissa: Ailuropoda melanoleuca (Panda) </br>
+![](https://i.pinimg.com/236x/93/fa/c0/93fac00692c54e9df0327528967f4741--baby-pandas-giant-pandas.jpg)
 
 

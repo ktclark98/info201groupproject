@@ -27,6 +27,7 @@ ui <- dashboardPage(
       menuItem("Dashboard", tabName = "dashboard", icon = icon("database")),
       menuItem("Country", tabName = "country", icon = icon("globe")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
+      menuItem("Country Codes", tabName = "legend", icon = icon("map")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
   ),
@@ -80,7 +81,8 @@ ui <- dashboardPage(
                     shows that 68% of the accounted species are under the least concern of endangerment, 
                     while only around 3% are considered extinct. 
                     We have also constructed a map that shows all the countries at once for any given endangerment level")
-                )
+                ),
+                valueBoxOutput("species")
               ),
               fluidRow(
                 box(
@@ -148,6 +150,12 @@ ui <- dashboardPage(
               )
       ),
       
+      tabItem(tabName = "legend",
+              fluidPage(
+                tableOutput("table")
+              )
+      ),
+      
       tabItem(tabName = "about",
               fluidPage(
                 includeMarkdown("about-us.Rmd")
@@ -158,6 +166,14 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
+  output$table <- renderTable({
+    iso.codes <- read.csv("data/iso-code2.csv", stringsAsFactors = FALSE)
+    iso.codes <- iso.codes %>% 
+      select(ID, Name)
+    return(iso.codes)}, 
+    align ='c', width='300px'
+  )
+  
   output$threat <- renderPlot({
     ThreatHistogram(input$text)
   })
@@ -177,6 +193,13 @@ server <- function(input, output) {
   output$picture <- renderText({
     src <- GetImageURL(input$text)
     c('<img src="', src, '" width="335px" height="300px">')  
+  })
+  
+  output$species <- renderValueBox({
+    valueBox(
+      GetNumberSpecies(as.character(input$country)), "Threatened Species in Selected Country", 
+      icon=icon("bug"), color="red"
+    ) 
   })
   
   output$worldMap <- renderPlotly({
