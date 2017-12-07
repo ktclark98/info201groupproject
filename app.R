@@ -144,7 +144,7 @@ ui <- dashboardPage(
                 box(
                   title = "Picture", solidHeader = TRUE, status ="primary",
                   htmlOutput("picture"),
-                  uiOutput("url"), width=2
+                  uiOutput("url"), width=4
                 )
               )
       ),

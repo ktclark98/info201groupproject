@@ -8,7 +8,7 @@ library(ggplot2)
 
 scientific.name <- "Loxodonta Africana"
 
-my.stop.words <- data_frame(word = c("&", "-", "and", "is", "or", "level"))
+my.stop.words <- data_frame(word = c("&", "-", "and", "is", "or", "level", "Named", "Problematic", "species"))
 
 # Takes in a the name of the species and creates a data table that contains the
 
@@ -61,7 +61,6 @@ ThreatsForSpecies <- function(species.name) {
   }
   
   
-  
   word.count <- newdf %>%
     
     group_by(word) %>%
@@ -76,6 +75,8 @@ ThreatsForSpecies <- function(species.name) {
   return (no.stop.word.count)
   
 }
+
+test <- ThreatsForSpecies("Enhydra lutris")
 
 
 ThreatHistogram <- function(name) {

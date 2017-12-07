@@ -7,10 +7,6 @@ GetUrl <- function(species.name) {
   return(website$rlurl)
 }
 
-scientific.name <- "Loxodonta Africana"
-
-test <- GetUrl(scientific.name)
-
 
 GetCommonName <- function(species.name) {
   ending <- paste0("/api/v3/species/common_names/", species.name, "?token=")
@@ -19,4 +15,3 @@ GetCommonName <- function(species.name) {
   return(common.name[1, 1])
 }
 
-test.name <- GetCommonName(scientific.name)
