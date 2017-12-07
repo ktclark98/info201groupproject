@@ -1,4 +1,3 @@
-## app.R ##
 library(shiny)
 library(shinydashboard)
 library(plotly)
@@ -34,11 +33,17 @@ ui <- dashboardPage(
                 box(
                   selectInput("mapGroup",
                               label = h3("Select Information"),
-                              choices = list("Critically Endangered" = "cr")
+                              choices = list("Critically Endangered" = "CR",
+                                             "Endangered" = "EN",
+                                             "Extinct" = "EX",
+                                             "Extinct in the Wild" = "EW",
+                                             "Vulnerable" = "VU",
+                                             "Near Threatened" = "NT",
+                                             "Least Concern" = "LC")
                   )
                 ),
                 box(
-                  plotlyOutput('country.pie', height = 250)
+                  plotlyOutput('country.pie', height = 500)
                 ),
                 box(
                   plotlyOutput("worldMap", height = 500)
@@ -57,7 +62,7 @@ ui <- dashboardPage(
                     status = "primary",
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
-                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
+                                choices = list("Threats" = "threats", "Actions" = "action", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
                   
@@ -105,7 +110,7 @@ server <- function(input, output) {
   })
   
   output$worldMap <- renderPlotly({
-    p
+    plot <- CategoryMap(input$mapGroup)
   })
   
   output$country.pie <- renderPlotly({

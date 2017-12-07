@@ -5,10 +5,9 @@
 library(dplyr)
 source("get-data.R")
 
-codes <- c("EW", "EN", "VU", "NT", "LC")
-
-sapply(codes, WriteData)
-
+# Given the endangered species category, pulls the count of that type of species
+# for all country in the RedList API and writes the resulting datafram into a 
+# csv file.
 WriteData <- function(categ) {
   country.ep <- "/api/v3/country/list?token="
   country <- AccessAPI(country.ep)
@@ -36,7 +35,7 @@ WriteData <- function(categ) {
     country <- AccessAPI(endpoint)
     country.df <- country[[length(country)]]
     country.count <- country.df %>% 
-        filter(category=="EX") %>% 
+        filter(category==categ) %>% 
         nrow()
     df <- c(country.id, country.count)
     names(df) <- c("Country", "Count")
@@ -59,3 +58,6 @@ WriteData <- function(categ) {
   
   write.csv(result, file = paste0("data/", categ, "-count.csv"))
 }
+
+codes <- c("EW", "EN", "VU", "NT", "LC")
+sapply(codes, WriteData)
