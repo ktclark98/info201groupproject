@@ -27,7 +27,6 @@ ui <- dashboardPage(
       menuItem("Dashboard", tabName = "dashboard", icon = icon("database")),
       menuItem("Country", tabName = "country", icon = icon("globe")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
-      menuItem("Country Codes", tabName = "legend", icon = icon("map")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
   ),
@@ -86,7 +85,7 @@ ui <- dashboardPage(
               ),
               fluidRow(
                 box(
-                  textInput("country", label = h3("Enter Country's 2 Letter Code:"), value = "US")
+                  textInput("country", label = h3("Enter Country's 3 Letter Code:"), value = "USA")
                 ),
                 box(
                   selectInput("mapGroup",
@@ -150,12 +149,6 @@ ui <- dashboardPage(
               )
       ),
       
-      tabItem(tabName = "legend",
-              fluidPage(
-                tableOutput("table")
-              )
-      ),
-      
       tabItem(tabName = "about",
               fluidPage(
                 includeMarkdown("about-us.Rmd")
@@ -166,14 +159,6 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  output$table <- renderTable({
-    iso.codes <- read.csv("data/iso-code2.csv", stringsAsFactors = FALSE)
-    iso.codes <- iso.codes %>% 
-      select(ID, Name)
-    return(iso.codes)}, 
-    align ='c', width='300px'
-  )
-  
   output$threat <- renderPlot({
     ThreatHistogram(input$text)
   })
@@ -197,7 +182,7 @@ server <- function(input, output) {
   
   output$species <- renderValueBox({
     valueBox(
-      GetNumberSpecies(as.character(input$country)), "Threatened Species in Selected Country", 
+      GetNumberSpecies(GetISO2(as.character(input$country))), "Threatened Species in Selected Country", 
       icon=icon("bug"), color="red"
     ) 
   })
@@ -207,7 +192,7 @@ server <- function(input, output) {
   })
   
   output$country.pie <- renderPlotly({
-    iso2 <- as.character(input$country)
+    iso2 <- GetISO2(as.character(input$country))
     GetPie(iso2)
   })
   
@@ -225,7 +210,7 @@ server <- function(input, output) {
   
   output$countryBox <- renderValueBox({
     valueBox(
-      CountryOfSpecies(input$text), "Countries this species lives in", icon=icon("globe"),
+      CountryOfSpecies(input$text), "Countries This Species Habitats", icon=icon("globe"),
       color = "purple", width=3
     )
   })

@@ -17,7 +17,7 @@ GetNumberSpecies <- function(country.id) {
 GetNumberSpecies("US")
 
 # Returns a dataframe containing the counts of all categories of threatend species
-# in the given country.
+# in the given country (2 Letter ISO given)
 GetCount <- function(country.id) {
   endpoint <- paste0("/api/v3/country/getspecies/", country.id, "?token=")
   country <- AccessAPI(endpoint)
@@ -47,6 +47,13 @@ GetCountryName <- function(iso2) {
     filter(ID == iso2) %>% 
     select(Name)
   return(name[1,1])
+}
+
+GetISO2 <- function(iso3) {
+  iso2 <- iso.codes %>% 
+    filter(Code == iso3) %>%
+    select(ID)
+  return(iso2[1,1])
 }
 
 # Given the country ISO 2 code, returns a pie chart of the count of threatened species

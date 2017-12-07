@@ -30,7 +30,7 @@ CategoryMap <- function(categ) {
     ) %>%
     colorbar(title = 'Species Count') %>%
     layout(
-      title = 'Number of Selected Species Category by Country',
+      title = 'Number of Species of Selected Category by Country',
       geo = g
     )
   return(p)

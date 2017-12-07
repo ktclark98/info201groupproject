@@ -1,8 +1,8 @@
 # <center> INFO 201 Final Project </center>
 <center> Kateka Seth, Katie Clark, Larissa Ho, and Tabitha Anderson </center>
 
-#### **GitHub Link**
-https://github.com/ktclark98/info201groupproject
+#### **ShinyApp Link**
+https://kataecy.shinyapps.io/endangered_species/
 
 #### **Project Description - [API Link](http://apiv3.iucnredlist.org/api/v3/docs#general)**
 ###### ***Dataset Information***
