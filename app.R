@@ -28,11 +28,11 @@ ui <- dashboardPage(
               h2("Country"), 
               fluidRow(
                 box(
-                  textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
+                  textInput("country", label = h3("Enter Country's 2 Letter Code:"), value = "US")
                 ),
                 box(
                   selectInput("mapGroup",
-                              label = h3("Select Information"),
+                              label = h3("Select Endangered Level"),
                               choices = list("Critically Endangered" = "CR",
                                              "Endangered" = "EN",
                                              "Extinct" = "EX",
@@ -74,11 +74,14 @@ ui <- dashboardPage(
                                 choices = list("Threats" = "threats", "Actions" = "action", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
-                  
-                box(
-                  title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
-                  plotOutput("histPlot")
-                ),
+                  tabBox(
+                    title="Graphs",
+                    id = "tabGraphs",
+                    tabPanel("Historical Assessment", plotOutput("historical")),
+                    tabPanel("Habitat", plotOutput("habitat")),
+                    tabPanel("Threats", plotOutput("threat")),
+                    tabPanel("Conservation Actions", plotOutput("action"))
+                  ),
                 
                   box(
                     title = "Picture", status = "info", solidHeader = TRUE,
@@ -103,18 +106,22 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  output$histPlot <- renderPlot({
-    if (input$checkGroup == "threats") {
-      plot <- ThreatHistogram(input$text)
-    } else if (input$checkGroup == "action") {
-      plot <- ConservationHistogram(input$text)
-    } else if (input$checkGroup == "habitat") {
-      plot <- HabitatHistogram(input$text)
-    } else if (input$checkGroup == "historical") {
-      plot <- HistoricalAssessment(input$text) 
-    }
-    plot
+  output$threat <- renderPlot({
+    ThreatHistogram(input$text)
   })
+  
+  output$historical <- renderPlot({
+    HistoricalAssessment(input$text)
+  })
+  
+  output$action <- renderPlot({
+    ConservationHistogram(input$text)
+  })
+  
+  output$habitat <- renderPlot({
+    HabitatHistogram(input$text)
+  })
+  
   
   output$paragraph <- renderText({
     "For the species page, we have several different inputs of data. For the actions, habitats, and threats options
@@ -135,7 +142,7 @@ server <- function(input, output) {
   
   output$picture <- renderText({
     src <- GetImageURL(input$text)
-    c('<img src="', src, '" width="300px" height="300px">')  
+    c('<img src="', src, '" width="250px" height="250px">')  
   })
   
   output$worldMap <- renderPlotly({
