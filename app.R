@@ -17,14 +17,14 @@ ui <- dashboardPage(
                   tags$li(class="dropdown",
                           tags$a(href="https://github.com/ktclark98/info201groupproject",
                                  tags$img(height = "20px",
-                                          src="github.png")
+                                          src="GitHub-Mark-Light-64px.png")
                                  )
                           )
                   ),
   dashboardSidebar(
     sidebarMenu(
       menuItem("Dashboard", tabName = "dashboard", icon = icon("database")),
-      menuItem("Country", tabName = "country", icon = icon("map-marker")),
+      menuItem("Country", tabName = "country", icon = icon("globe")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
@@ -185,7 +185,8 @@ server <- function(input, output) {
   })
   
   output$url <- renderUI({
-    tagList("Link to more information:", GetUrl(input$text))
+    this.url <- a("IUCN RedList", href=GetUrl(input$text))
+    tagList("Link to more information:", this.url)
   })
   
   output$nameBox <- renderValueBox({

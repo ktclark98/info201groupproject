@@ -1,252 +1,251 @@
-"","ID","Country","Count"
-"1","UZ","Uzbekistan","18"
-"2","PS","Palestinian Territory, Occupied","15"
-"3","QA","Qatar","12"
-"4","SA","Saudi Arabia","29"
-"5","AF","Afghanistan","12"
-"6","LB","Lebanon","42"
-"7","BH","Bahrain","11"
-"8","CY","Cyprus","29"
-"9","SY","Syrian Arab Republic","52"
-"10","TJ","Tajikistan","10"
-"11","TM","Turkmenistan","13"
-"12","AE","United Arab Emirates","21"
-"13","IR","Iran, Islamic Republic of","37"
-"14","IQ","Iraq","20"
-"15","OM","Oman","31"
-"16","PK","Pakistan","39"
-"17","IL","Israel","62"
-"18","JO","Jordan","29"
-"19","KZ","Kazakhstan","23"
-"20","KW","Kuwait","15"
-"21","KG","Kyrgyzstan","13"
-"22","VN","Viet Nam","191"
-"23","MV","Maldives","13"
-"24","PH","Philippines","158"
-"25","BD","Bangladesh","54"
-"26","BT","Bhutan","35"
-"27","BN","Brunei Darussalam","50"
-"28","KH","Cambodia","68"
-"29","TL","Timor-Leste","12"
-"30","SG","Singapore","48"
-"31","LK","Sri Lanka","182"
-"32","TH","Thailand","160"
-"33","NP","Nepal","31"
-"34","LA","Lao People's Democratic Republic","75"
-"35","YE","Yemen","57"
-"36","GE","Georgia","27"
-"37","TR","Turkey","140"
-"38","AM","Armenia","52"
-"39","AZ","Azerbaijan","25"
-"40","DT","Disputed Territory","1"
-"41","MY","Malaysia","246"
-"42","IO","British Indian Ocean Territory","9"
-"43","IN","India","405"
-"44","ID","Indonesia","313"
-"45","MM","Myanmar","103"
-"46","VU","Vanuatu","22"
-"47","WF","Wallis and Futuna","11"
-"48","GU","Guam","22"
-"49","MH","Marshall Islands","10"
-"50","PN","Pitcairn","10"
-"51","WS","Samoa","17"
-"52","CX","Christmas Island","7"
-"53","CC","Cocos (Keeling) Islands","6"
-"54","FJ","Fiji","64"
-"55","TK","Tokelau","8"
-"56","TO","Tonga","16"
-"57","TV","Tuvalu","11"
-"58","NR","Nauru","5"
-"59","NC","New Caledonia","183"
-"60","NU","Niue","11"
-"61","NF","Norfolk Island","7"
-"62","MP","Northern Mariana Islands","19"
-"63","PW","Palau","31"
-"64","VA","Holy See (Vatican City State)","0"
-"65","MK","Macedonia, the former Yugoslav Republic of","36"
-"66","MT","Malta","14"
-"67","MC","Monaco","9"
-"68","PL","Poland","22"
-"69","RO","Romania","33"
-"70","SM","San Marino","0"
-"71","AL","Albania","52"
-"72","LV","Latvia","5"
-"73","LI","Liechtenstein","2"
-"74","LT","Lithuania","5"
-"75","LU","Luxembourg","3"
-"76","BE","Belgium","8"
-"77","BA","Bosnia and Herzegovina","35"
-"78","BG","Bulgaria","24"
-"79","HR","Croatia","52"
-"80","CZ","Czech Republic","26"
-"81","DK","Denmark","14"
-"82","EE","Estonia","7"
-"83","FO","Faroe Islands","4"
-"84","FI","Finland","8"
-"85","GG","Guernsey","0"
-"86","IM","Isle of Man","1"
-"87","JE","Jersey","0"
-"88","DE","Germany","47"
-"89","GI","Gibraltar","13"
-"90","GL","Greenland","10"
-"91","SK","Slovakia","26"
-"92","SI","Slovenia","40"
-"93","SJ","Svalbard and Jan Mayen","2"
-"94","SE","Sweden","12"
-"95","CH","Switzerland","20"
-"96","AD","Andorra","3"
-"97","AT","Austria","44"
-"98","HU","Hungary","30"
-"99","IS","Iceland","9"
-"100","NL","Netherlands","10"
-"101","NO","Norway","19"
-"102","IE","Ireland","12"
-"103","AX","≈land Islands","0"
-"104","ME","Montenegro","35"
-"105","GY","Guyana","20"
-"106","FK","Falkland Islands (Malvinas)","16"
-"107","GF","French Guiana","12"
-"108","SR","Suriname","14"
-"109","UY","Uruguay","28"
-"110","PY","Paraguay","15"
-"111","PE","Peru","148"
-"112","VG","Virgin Islands, British","17"
-"113","VI","Virgin Islands, U.S.","21"
-"114","GP","Guadeloupe","22"
-"115","HT","Haiti","62"
-"116","MQ","Martinique","12"
-"117","MS","Montserrat","12"
-"118","KN","Saint Kitts and Nevis","12"
-"119","LC","Saint Lucia","17"
-"120","VC","Saint Vincent and the Grenadines","16"
-"121","BB","Barbados","12"
-"122","BM","Bermuda","18"
-"123","KY","Cayman Islands","27"
-"124","CU","Cuba","127"
-"125","DM","Dominica","19"
-"126","DO","Dominican Republic","70"
-"127","GD","Grenada","15"
-"128","TT","Trinidad and Tobago","35"
-"129","TC","Turks and Caicos Islands","19"
-"130","AI","Anguilla","17"
-"131","AG","Antigua and Barbuda","16"
-"132","AW","Aruba","8"
-"133","BS","Bahamas","28"
-"134","JM","Jamaica","95"
-"135","EH","Western Sahara","14"
-"136","DZ","Algeria","52"
-"137","TN","Tunisia","35"
-"138","MA","Morocco","87"
-"139","ZM","Zambia","28"
-"140","ZW","Zimbabwe","24"
-"141","GN","Guinea","56"
-"142","LY","Libya","23"
-"143","GW","Guinea-Bissau","17"
-"144","ML","Mali","12"
-"145","MR","Mauritania","21"
-"146","YT","Mayotte","16"
-"147","RW","Rwanda","36"
-"148","RE","RÈunion",NA
-"149","SN","Senegal","31"
-"150","SL","Sierra Leone","47"
-"151","LS","Lesotho","9"
-"152","LR","Liberia","47"
-"153","MG","Madagascar","676"
-"154","MW","Malawi","37"
-"155","BJ","Benin","22"
-"156","BW","Botswana","11"
-"157","BF","Burkina Faso","7"
-"158","BI","Burundi","73"
-"159","CM","Cameroon","262"
-"160","CV","Cape Verde","48"
-"161","CF","Central African Republic","15"
-"162","TD","Chad","11"
-"163","KM","Comoros","31"
-"164","CG","Congo","32"
-"165","CD","Congo, The Democratic Republic of the","125"
-"166","CI","CÙte d'Ivoire",NA
-"167","DJ","Djibouti","16"
-"168","ER","Eritrea","18"
-"169","ET","Ethiopia","50"
-"170","GA","Gabon","73"
-"171","GM","Gambia","15"
-"172","GH","Ghana","55"
-"173","SO","Somalia","46"
-"174","SD","Sudan","21"
-"175","SZ","Swaziland","11"
-"176","TZ","Tanzania, United Republic of","429"
-"177","TG","Togo","21"
-"178","UG","Uganda","50"
-"179","MZ","Mozambique","82"
-"180","NE","Niger","8"
-"181","NG","Nigeria","82"
-"182","KE","Kenya","150"
-"183","GT","Guatemala","117"
-"184","BZ","Belize","40"
-"185","SV","El Salvador","33"
-"186","PA","Panama","138"
-"187","HM","Heard Island and McDonald Islands","5"
-"188","BV","Bouvet Island","3"
-"189","AQ","Antarctica","8"
-"190","MD","Moldova","4"
-"191","BY","Belarus","5"
-"192","MN","Mongolia","14"
-"193","MO","Macao","2"
-"194","HK","Hong Kong","19"
-"195","KP","Korea, Democratic People's Republic of","28"
-"196","KR","Korea, Republic of","44"
-"197","PM","Saint Pierre and Miquelon","5"
-"198","MF","Saint Martin (French part)","17"
-"199","BL","Saint BarthÈlemy","12"
-"200","AS","American Samoa","17"
-"201","CK","Cook Islands","13"
-"202","PF","French Polynesia","31"
-"203","SB","Solomon Islands","30"
-"204","UM","United States Minor Outlying Islands","10"
-"205","AU","Australia","228"
-"206","NZ","New Zealand","67"
-"207","PG","Papua New Guinea","70"
-"208","KI","Kiribati","14"
-"209","PT","Portugal","96"
-"210","FR","France","86"
-"211","GR","Greece","140"
-"212","ES","Spain","243"
-"213","GB","United Kingdom","35"
-"214","IT","Italy","134"
-"215","RS","Serbia","17"
-"216","BR","Brazil","324"
-"217","CL","Chile","72"
-"218","CO","Colombia","297"
-"219","EC","Ecuador","837"
-"220","AR","Argentina","79"
-"221","PR","Puerto Rico","43"
-"222","AN","Netherlands Antilles",NA
-"223","EG","Egypt","39"
-"224","MU","Mauritius","58"
-"225","ST","Sao TomÈ and Principe","20"
-"226","SC","Seychelles","168"
-"227","GQ","Equatorial Guinea","56"
-"228","ZA","South Africa","187"
-"229","AO","Angola","44"
-"230","NA","Namibia","29"
-"231","MX","Mexico","460"
-"232","CR","Costa Rica","113"
-"233","HN","Honduras","112"
-"234","NI","Nicaragua","49"
-"235","GS","South Georgia and the South Sandwich Islands","7"
-"236","RU","Russian Federation","80"
-"237","UA","Ukraine","37"
-"238","CN","China","406"
-"239","TW","Taiwan, Province of China","95"
-"240","JP","Japan","145"
-"241","CA","Canada","56"
-"242","US","United States","458"
-"243","BO","Bolivia, Plurinational States of","55"
-"244","SH","Saint Helena, Ascension and Tristan da Cunha","36"
-"245","CW","CuraÁao",NA
-"246","SX","Sint Maarten (Dutch part)","16"
-"247","BQ","Bonaire, Sint Eustatius and Saba","14"
-"248","SS","South Sudan","14"
-"249","TF","French Southern Territories","11"
-"250","FM","Micronesia, Federated States of ","24"
-"251","VE","Venezuela, Bolivarian Republic of","96"
+,ID,Country,Count
+1,UZ,Uzbekistan,18
+2,PS,"Palestinian Territory, Occupied",15
+3,QA,Qatar,12
+4,SA,Saudi Arabia,29
+5,AF,Afghanistan,12
+6,LB,Lebanon,42
+7,BH,Bahrain,11
+8,CY,Cyprus,29
+9,SY,Syrian Arab Republic,52
+10,TJ,Tajikistan,10
+11,TM,Turkmenistan,13
+12,AE,United Arab Emirates,21
+13,IR,"Iran, Islamic Republic of",37
+14,IQ,Iraq,20
+15,OM,Oman,31
+16,PK,Pakistan,39
+17,IL,Israel,62
+18,JO,Jordan,29
+19,KZ,Kazakhstan,23
+20,KW,Kuwait,15
+21,KG,Kyrgyzstan,13
+22,VN,Viet Nam,191
+23,MV,Maldives,13
+24,PH,Philippines,158
+25,BD,Bangladesh,54
+26,BT,Bhutan,35
+27,BN,Brunei Darussalam,50
+28,KH,Cambodia,68
+29,TL,Timor-Leste,12
+30,SG,Singapore,48
+31,LK,Sri Lanka,182
+32,TH,Thailand,160
+33,NP,Nepal,31
+34,LA,Lao People's Democratic Republic,75
+35,YE,Yemen,57
+36,GE,Georgia,27
+37,TR,Turkey,140
+38,AM,Armenia,52
+39,AZ,Azerbaijan,25
+40,DT,Disputed Territory,1
+41,MY,Malaysia,246
+42,IO,British Indian Ocean Territory,9
+43,IN,India,405
+44,ID,Indonesia,313
+45,MM,Myanmar,103
+46,VU,Vanuatu,22
+47,WF,Wallis and Futuna,11
+48,GU,Guam,22
+49,MH,Marshall Islands,10
+50,PN,Pitcairn,10
+51,WS,Samoa,17
+52,CX,Christmas Island,7
+53,CC,Cocos (Keeling) Islands,6
+54,FJ,Fiji,64
+55,TK,Tokelau,8
+56,TO,Tonga,16
+57,TV,Tuvalu,11
+58,NR,Nauru,5
+59,NC,New Caledonia,183
+60,NU,Niue,11
+61,NF,Norfolk Island,7
+62,MP,Northern Mariana Islands,19
+63,PW,Palau,31
+64,VA,Holy See (Vatican City State),0
+65,MK,"Macedonia, the former Yugoslav Republic of",36
+66,MT,Malta,14
+67,MC,Monaco,9
+68,PL,Poland,22
+69,RO,Romania,33
+70,SM,San Marino,0
+71,AL,Albania,52
+72,LV,Latvia,5
+73,LI,Liechtenstein,2
+74,LT,Lithuania,5
+75,LU,Luxembourg,3
+76,BE,Belgium,8
+77,BA,Bosnia and Herzegovina,35
+78,BG,Bulgaria,24
+79,HR,Croatia,52
+80,CZ,Czech Republic,26
+81,DK,Denmark,14
+82,EE,Estonia,7
+83,FO,Faroe Islands,4
+84,FI,Finland,8
+85,GG,Guernsey,0
+86,IM,Isle of Man,1
+87,JE,Jersey,0
+88,DE,Germany,47
+89,GI,Gibraltar,13
+90,GL,Greenland,10
+91,SK,Slovakia,26
+92,SI,Slovenia,40
+93,SJ,Svalbard and Jan Mayen,2
+94,SE,Sweden,12
+95,CH,Switzerland,20
+96,AD,Andorra,3
+97,AT,Austria,44
+98,HU,Hungary,30
+99,IS,Iceland,9
+100,NL,Netherlands,10
+101,NO,Norway,19
+102,IE,Ireland,12
+104,ME,Montenegro,35
+105,GY,Guyana,20
+106,FK,Falkland Islands (Malvinas),16
+107,GF,French Guiana,12
+108,SR,Suriname,14
+109,UY,Uruguay,28
+110,PY,Paraguay,15
+111,PE,Peru,148
+112,VG,"Virgin Islands, British",17
+113,VI,"Virgin Islands, U.S.",21
+114,GP,Guadeloupe,22
+115,HT,Haiti,62
+116,MQ,Martinique,12
+117,MS,Montserrat,12
+118,KN,Saint Kitts and Nevis,12
+119,LC,Saint Lucia,17
+120,VC,Saint Vincent and the Grenadines,16
+121,BB,Barbados,12
+122,BM,Bermuda,18
+123,KY,Cayman Islands,27
+124,CU,Cuba,127
+125,DM,Dominica,19
+126,DO,Dominican Republic,70
+127,GD,Grenada,15
+128,TT,Trinidad and Tobago,35
+129,TC,Turks and Caicos Islands,19
+130,AI,Anguilla,17
+131,AG,Antigua and Barbuda,16
+132,AW,Aruba,8
+133,BS,Bahamas,28
+134,JM,Jamaica,95
+135,EH,Western Sahara,14
+136,DZ,Algeria,52
+137,TN,Tunisia,35
+138,MA,Morocco,87
+139,ZM,Zambia,28
+140,ZW,Zimbabwe,24
+141,GN,Guinea,56
+142,LY,Libya,23
+143,GW,Guinea-Bissau,17
+144,ML,Mali,12
+145,MR,Mauritania,21
+146,YT,Mayotte,16
+147,RW,Rwanda,36
+148,RE,R_union,NA
+149,SN,Senegal,31
+150,SL,Sierra Leone,47
+151,LS,Lesotho,9
+152,LR,Liberia,47
+153,MG,Madagascar,676
+154,MW,Malawi,37
+155,BJ,Benin,22
+156,BW,Botswana,11
+157,BF,Burkina Faso,7
+158,BI,Burundi,73
+159,CM,Cameroon,262
+160,CV,Cape Verde,48
+161,CF,Central African Republic,15
+162,TD,Chad,11
+163,KM,Comoros,31
+164,CG,Congo,32
+165,CD,"Congo, The Democratic Republic of the",125
+166,CI,C™te d'Ivoire,NA
+167,DJ,Djibouti,16
+168,ER,Eritrea,18
+169,ET,Ethiopia,50
+170,GA,Gabon,73
+171,GM,Gambia,15
+172,GH,Ghana,55
+173,SO,Somalia,46
+174,SD,Sudan,21
+175,SZ,Swaziland,11
+176,TZ,"Tanzania, United Republic of",429
+177,TG,Togo,21
+178,UG,Uganda,50
+179,MZ,Mozambique,82
+180,NE,Niger,8
+181,NG,Nigeria,82
+182,KE,Kenya,150
+183,GT,Guatemala,117
+184,BZ,Belize,40
+185,SV,El Salvador,33
+186,PA,Panama,138
+187,HM,Heard Island and McDonald Islands,5
+188,BV,Bouvet Island,3
+189,AQ,Antarctica,8
+190,MD,Moldova,4
+191,BY,Belarus,5
+192,MN,Mongolia,14
+193,MO,Macao,2
+194,HK,Hong Kong,19
+195,KP,"Korea, Democratic People's Republic of",28
+196,KR,"Korea, Republic of",44
+197,PM,Saint Pierre and Miquelon,5
+198,MF,Saint Martin (French part),17
+199,BL,Saint Barth_lemy,12
+200,AS,American Samoa,17
+201,CK,Cook Islands,13
+202,PF,French Polynesia,31
+203,SB,Solomon Islands,30
+204,UM,United States Minor Outlying Islands,10
+205,AU,Australia,228
+206,NZ,New Zealand,67
+207,PG,Papua New Guinea,70
+208,KI,Kiribati,14
+209,PT,Portugal,96
+210,FR,France,86
+211,GR,Greece,140
+212,ES,Spain,243
+213,GB,United Kingdom,35
+214,IT,Italy,134
+215,RS,Serbia,17
+216,BR,Brazil,324
+217,CL,Chile,72
+218,CO,Colombia,297
+219,EC,Ecuador,837
+220,AR,Argentina,79
+221,PR,Puerto Rico,43
+222,AN,Netherlands Antilles,NA
+223,EG,Egypt,39
+224,MU,Mauritius,58
+225,ST,Sao Tom_ and Principe,20
+226,SC,Seychelles,168
+227,GQ,Equatorial Guinea,56
+228,ZA,South Africa,187
+229,AO,Angola,44
+230,NA,Namibia,29
+231,MX,Mexico,460
+232,CR,Costa Rica,113
+233,HN,Honduras,112
+234,NI,Nicaragua,49
+235,GS,South Georgia and the South Sandwich Islands,7
+236,RU,Russian Federation,80
+237,UA,Ukraine,37
+238,CN,China,406
+239,TW,"Taiwan, Province of China",95
+240,JP,Japan,145
+241,CA,Canada,56
+242,US,United States,458
+243,BO,"Bolivia, Plurinational States of",55
+244,SH,"Saint Helena, Ascension and Tristan da Cunha",36
+245,CW,Curaçao,NA
+246,SX,Sint Maarten (Dutch part),16
+247,BQ,"Bonaire, Sint Eustatius and Saba",14
+248,SS,South Sudan,14
+249,TF,French Southern Territories,11
+250,FM,"Micronesia, Federated States of ",24
+251,VE,"Venezuela, Bolivarian Republic of",96
