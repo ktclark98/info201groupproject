@@ -28,6 +28,9 @@ ui <- dashboardPage(
               h2("Country"), 
               fluidRow(
                 box(textInput("country", label = h3("Enter Your Country's 2 Letter Code:"))),
+                box(
+                  textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
+                ),
                 
                 box(
                   plotlyOutput('country.pie', height = 250)
@@ -48,6 +51,7 @@ ui <- dashboardPage(
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
+<<<<<<< HEAD
                 box(
                   textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
                 ),
@@ -62,6 +66,22 @@ ui <- dashboardPage(
                   plotOutput("histPlot")
                 )
               )
+=======
+                  box(
+                    textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
+                  ),
+                  box(
+                    selectInput("checkGroup",
+                                label = h3("Select Information"),
+                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+                    )
+                  ),
+                  box(
+                    #plotOutput("distPlot", height = 250),
+                    plotOutput("histPlot")
+                  )
+                )
+>>>>>>> 9a5489b8312ce5ffdaa1f0a16e9e042d9b50fbf5
       ),
       
       tabItem(tabName = "about",

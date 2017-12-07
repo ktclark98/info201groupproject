@@ -66,7 +66,8 @@ ThreatsForSpecies <- function(species.name) {
     
     group_by(word) %>%
     
-    summarise(n = n())
+    summarise(n = n()) 
+  
   
   no.stop.word.count <- word.count %>%
     
