@@ -52,16 +52,15 @@ ui <- dashboardPage(
               h2("Species"),
               fluidRow(
                   box(
-                    textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
+                    textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
                   box(
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
-                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
                   box(
-                    #plotOutput("distPlot", height = 250),
                     plotOutput("histPlot")
                   ),
                   box(

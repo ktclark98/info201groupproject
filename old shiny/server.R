@@ -7,12 +7,6 @@ source("selected-country-data.R")
 source("overtime-graphic.R")
 
 shinyServer(function(input, output) {
-  # output$distPlot <- renderPlot({
-  #   # Displays the historial assessment graph if the checkbox is selected 
-  #   if (input$checkGroup == "historical") {
-  #     HistoricalAssessment(input$text) 
-  #   }
-  # })
   
   output$histPlot <- renderPlot({
     if (input$checkGroup == "threats") {
