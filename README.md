@@ -2,7 +2,7 @@
 <center> Kateka Seth, Katie Clark, Larissa Ho, and Tabitha Anderson </center>
 
 #### **ShinyApp Link**
-https://kataecy.shinyapps.io/endangered_species/
+https://larissaho.shinyapps.io/info201groupproject/ 
 
 #### **Project Description - [API Link](http://apiv3.iucnredlist.org/api/v3/docs#general)**
 ###### ***Dataset Information***
