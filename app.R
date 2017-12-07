@@ -45,15 +45,24 @@ ui <- dashboardPage(
                 box(
                   plotlyOutput('country.pie', height = 500)
                 ),
+
                 box(
                   plotlyOutput("worldMap", height = 500)
+                ),
+                box(
+                  title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
+                  htmlOutput("paragraphcountry")
                 )
+
               )
       ),
       
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
+                
+                valueBoxOutput("nameBox"),
+                
                   box(
                     status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
@@ -66,6 +75,11 @@ ui <- dashboardPage(
                     )
                   ),
                   
+                box(
+                  title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
+                  plotOutput("histPlot")
+                ),
+                
                   box(
                     title = "Picture", status = "info", solidHeader = TRUE,
                     htmlOutput("picture"),
@@ -73,11 +87,9 @@ ui <- dashboardPage(
                   ),
                   
                   box(
-                    title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
-                    plotOutput("histPlot")
-                  ),
-                  
-                  valueBoxOutput("nameBox")
+                    title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
+                    htmlOutput("paragraph")
+                  )
               )
       ),
       
@@ -102,6 +114,23 @@ server <- function(input, output) {
       plot <- HistoricalAssessment(input$text) 
     }
     plot
+  })
+  
+  output$paragraph <- renderText({
+    "For the species page, we have several different inputs of data. For the actions, habitats, and threats options
+    a histogram is created. This histogram is used because our data sets for these topics gave us sentences as data describing
+    the issues. The histogram shows the most commonly occurring words or phrases that account for that topic. This can give
+    the readers ideas about the most prevalent issues for action that needs to be made for conservation, the general habitats
+    of the animal, and the things threatening the animal. We also have created a line plot to show the how the endangerment
+    levels for the animal has changed over the years."
+    
+  })
+  
+  output$paragraphcountry <- renderText ({
+    "For the country page, we put our focus on showing visitors what levels of endangerment are for any country. The pie chart shows 
+     the percentage of animals in each category depending on the country input. For example, if you put in US for the United States, it 
+     shows that 68% of the accounted species are under the least concern of endangerment, while only around 3% are considered extinct. 
+     We have also constructed a map that shows all the countries at once for any given endangerment level"
   })
   
   output$picture <- renderText({
