@@ -8,7 +8,7 @@ library(ggplot2)
 
 scientific.name <- "Loxodonta Africana"
 
-my.stop.words <- data_frame(word = c("&", "-", "and", "is", "or", "level", "Named", "Problematic", "species"))
+my.stop.words <- data_frame(word = c("&", "-", "and", "is", "or", "level", "Named", "species"))
 
 # Takes in a the name of the species and creates a data table that contains the
 
@@ -95,7 +95,7 @@ ThreatHistogram <- function(name) {
   
     ggtitle("Most Common Words \n Describing Threats") +
     
-    labs(x = "Words", y = "frequency")
+    labs(x = "Words", y = "Frequency")
   
   return(threat)
   
@@ -189,7 +189,7 @@ ConservationHistogram <- function(name) {
     
    ggtitle("Most Common Words \n Describing Conservation Efforts") +
     
-    labs(x = "Words", y = "frequency")
+    labs(x = "Words", y = "Frequency")
   
   return(conservation)
   
@@ -273,7 +273,7 @@ HabitatHistogram <- function(name) {
     
     ggtitle("Most Common Words \n Describing Habitats") +
     
-    labs(x = "Words", y = "frequency")
+    labs(x = "Words", y = "Frequency")
   
   return(habitat)
   
