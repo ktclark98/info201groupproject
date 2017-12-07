@@ -51,16 +51,15 @@ ui <- dashboardPage(
               h2("Species"),
               fluidRow(
                   box(
-                    textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
+                    textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
                   box(
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
-                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
                   box(
-                    #plotOutput("distPlot", height = 250),
                     plotOutput("histPlot")
                   )
                 )
@@ -76,13 +75,6 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  # output$distPlot <- renderPlot({
-  #   # Displays the historial assessment graph if the checkbox is selected 
-  #   if (input$checkGroup == "historical") {
-  #     HistoricalAssessment(input$text) 
-  #   }
-  # })
-  
   output$histPlot <- renderPlot({
     if (input$checkGroup == "threats") {
       plot <- ThreatHistogram(input$text)
