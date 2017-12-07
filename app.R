@@ -27,7 +27,6 @@ ui <- dashboardPage(
       tabItem(tabName = "country",
               h2("Country"), 
               fluidRow(
-                box(textInput("country", label = h3("Enter Your Country's 2 Letter Code:"))),
                 box(
                   textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
                 ),
