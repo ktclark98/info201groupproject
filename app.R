@@ -6,9 +6,10 @@ library(knitr)
 library(ggplot2)
 
 source("Tab's-Data-Wrangling.R")
-#source("country-map.R")
+source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
+source("get-image.R")
 
 ui <- dashboardPage(
   skin = "purple",
@@ -27,7 +28,6 @@ ui <- dashboardPage(
       tabItem(tabName = "country",
               h2("Country"), 
               fluidRow(
-                box(textInput("country", label = h3("Enter Your Country's 2 Letter Code:"))),
                 box(
                   textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
                 ),
@@ -51,37 +51,22 @@ ui <- dashboardPage(
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
-<<<<<<< HEAD
                 box(
-                  textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
+                  textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                 ),
                 box(
-                  checkboxGroupInput("checkGroup",
-                                     label = h3("Select Information"),
-                                     choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
-                                     )
+                  selectInput("checkGroup",
+                              label = h3("Select Information"),
+                              choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
+                  )
                 ),
                 box(
-                  #plotOutput("distPlot", height = 250),
                   plotOutput("histPlot")
+                ),
+                box(
+                  htmlOutput("picture")
                 )
               )
-=======
-                  box(
-                    textInput("text", label = h3("Species"), value = "Enter Species Name Here...")
-                  ),
-                  box(
-                    selectInput("checkGroup",
-                                label = h3("Select Information"),
-                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
-                    )
-                  ),
-                  box(
-                    #plotOutput("distPlot", height = 250),
-                    plotOutput("histPlot")
-                  )
-                )
->>>>>>> 9a5489b8312ce5ffdaa1f0a16e9e042d9b50fbf5
       ),
       
       tabItem(tabName = "about",
@@ -94,13 +79,6 @@ ui <- dashboardPage(
 )
 
 server <- function(input, output) {
-  # output$distPlot <- renderPlot({
-  #   # Displays the historial assessment graph if the checkbox is selected 
-  #   if (input$checkGroup == "historical") {
-  #     HistoricalAssessment(input$text) 
-  #   }
-  # })
-  
   output$histPlot <- renderPlot({
     if (input$checkGroup == "threats") {
       plot <- ThreatHistogram(input$text)
@@ -114,8 +92,13 @@ server <- function(input, output) {
     plot
   })
   
+  output$picture <- renderText({
+    src <- GetImageURL(input$text)
+    c('<img src="', src, '" width="300px" height="300px">')  
+    # <img src="url", height=300,>
+  })
+  
   output$worldMap <- renderPlotly({
-    
     p
   })
   
@@ -126,4 +109,3 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
-

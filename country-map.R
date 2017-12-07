@@ -4,6 +4,7 @@ library(dplyr)
 # Get 3 letter country code to map using ploty
 iso.codes <- read.csv("data/iso-codes.csv", stringsAsFactors = FALSE)
 country.count <- read.csv("data/country-count.csv", stringsAsFactors = FALSE)
+
 country.count <- country.count %>% 
   left_join(iso.codes, by= "ID") %>% 
   select(ID, Code, Country, Count)
