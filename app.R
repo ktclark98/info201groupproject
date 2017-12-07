@@ -9,6 +9,7 @@ source("Tab's-Data-Wrangling.R")
 source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
+source("get-image.R")
 
 ui <- dashboardPage(
   skin = "purple",
@@ -61,6 +62,9 @@ ui <- dashboardPage(
                   ),
                   box(
                     plotOutput("histPlot")
+                  ),
+                  box(
+                    htmlOutput("picture")
                   )
 
                 )
@@ -87,6 +91,12 @@ server <- function(input, output) {
       plot <- HistoricalAssessment(input$text) 
     }
     plot
+  })
+  
+  output$picture <- renderText({
+    src <- GetImageURL(input$text)
+    c('<img src="', src, '" width="300px" height="300px">')  
+    # <img src="url", height=300,>
   })
   
   output$worldMap <- renderPlotly({
