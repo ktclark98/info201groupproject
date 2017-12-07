@@ -3,7 +3,7 @@ library(ggplot2)
 
 source("get-data.R")
 
-# Given the scientific name for a species, a visual representation of the historial assessment is returned  
+# Given the scientific name for a species, a graph showing the historial assessment overtime is returned
 HistoricalAssessment <- function(species.name) {
   historial.ending <- paste0("/api/v3/species/history/name/", species.name, "?token=")
   access.data <- AccessAPI(historial.ending)
@@ -15,7 +15,4 @@ HistoricalAssessment <- function(species.name) {
                                         "Vulnerable", "Endangered", "Critically Endangered", "Extinct in the Wild", "Extinct")) +
             labs(title = "Species' Endangerment Level over the Years", x = "Year", y = "Level of Endangerment")) 
 } 
-
-
-HistoricalAssessment("Loxodonta africana")
 
