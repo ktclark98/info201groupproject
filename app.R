@@ -37,7 +37,7 @@ ui <- dashboardPage(
               fluidPage(
                 title="dash",
                 fluidRow(
-                  valueBox(species.count, "Total Species", icon=icon("bug"),width =3, color="red"),
+                  valueBox(species.count, "Total Threatened Species", icon=icon("bug"),width =3, color="red"),
                   valueBox(country.count, "Total Countries", icon=icon("globe"), width=3,color="red")
                 ),
                 fluidRow(
@@ -177,12 +177,12 @@ server <- function(input, output) {
   
   output$picture <- renderText({
     src <- GetImageURL(input$text)
-    c('<img src="', src, '" width="335px" height="300px">')  
+    c('<img src="', src, '" width="300px" height="300px">')  
   })
   
   output$species <- renderValueBox({
     valueBox(
-      GetNumberSpecies(GetISO2(as.character(input$country))), "Threatened Species in Selected Country", 
+      GetNumberSpecies(GetISO2(toupper(as.character(input$country)))), "Threatened Species in Selected Country", 
       icon=icon("bug"), color="red"
     ) 
   })
@@ -192,7 +192,7 @@ server <- function(input, output) {
   })
   
   output$country.pie <- renderPlotly({
-    iso2 <- GetISO2(as.character(input$country))
+    iso2 <- GetISO2(toupper(as.character(input$country)))
     GetPie(iso2)
   })
   
