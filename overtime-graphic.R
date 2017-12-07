@@ -16,6 +16,3 @@ HistoricalAssessment <- function(species.name) {
             labs(title = "Species' Endangerment Level over the Years", x = "Year", y = "Level of Endangerment")) 
 } 
 
-
-HistoricalAssessment("Loxodonta africana")
-
