@@ -17,7 +17,6 @@ ui <- dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Your Country", tabName = "country", icon = icon("map-marker")),
-      menuItem("Location", tabName = "location", icon = icon("map")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
@@ -31,17 +30,15 @@ ui <- dashboardPage(
                 box(
                   textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
                 ),
-                
+                box(
+                  selectInput("mapGroup",
+                              label = h3("Select Information"),
+                              choices = list("Critically Endangered" = "cr")
+                  )
+                ),
                 box(
                   plotlyOutput('country.pie', height = 250)
-                )
-              )
-      ),
-      
-      # Second tab content
-      tabItem(tabName = "location",
-              h2("Location"),
-              fluidRow(
+                ),
                 box(
                   plotlyOutput("worldMap", height = 500)
                 )
@@ -95,7 +92,6 @@ server <- function(input, output) {
   output$picture <- renderText({
     src <- GetImageURL(input$text)
     c('<img src="', src, '" width="300px" height="300px">')  
-    # <img src="url", height=300,>
   })
   
   output$worldMap <- renderPlotly({
