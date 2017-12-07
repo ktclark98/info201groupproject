@@ -6,7 +6,7 @@ library(knitr)
 library(ggplot2)
 
 source("Tab's-Data-Wrangling.R")
-source("country-map.R")
+#source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
 
@@ -54,7 +54,7 @@ ui <- dashboardPage(
                 box(
                   checkboxGroupInput("checkGroup",
                                      label = h3("Select Information"),
-                                     choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historial Assessment" = "historical")
+                                     choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
                                      )
                 ),
                 box(
