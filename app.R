@@ -144,7 +144,7 @@ ui <- dashboardPage(
                 box(
                   title = "Picture", solidHeader = TRUE, status ="primary",
                   htmlOutput("picture"),
-                  uiOutput("url"), width=3
+                  uiOutput("url"), width=4
                 )
               )
       ),
@@ -177,7 +177,7 @@ server <- function(input, output) {
   
   output$picture <- renderText({
     src <- GetImageURL(input$text)
-    c('<img src="', src, '" width="335px" height="300px">')  
+    c('<img src="', src, '" width="300px" height="300px">')  
   })
   
   output$species <- renderValueBox({
