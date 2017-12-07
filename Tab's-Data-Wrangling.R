@@ -78,7 +78,6 @@ ThreatsForSpecies <- function(species.name) {
 }
 
 
-
 ThreatHistogram <- function(name) {
   
   threats.data <- ThreatsForSpecies(name)
@@ -90,9 +89,9 @@ ThreatHistogram <- function(name) {
     ggplot(aes(word, n)) +
     
     geom_col() +
-    
+  
     xlab(NULL) + 
-    
+  
     ggtitle("Most Common Words \n Describing Threats") +
     
     labs(x = "Words", y = "frequency")

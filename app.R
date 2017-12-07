@@ -72,7 +72,7 @@ ui <- dashboardPage(
                     status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
-                
+
                   tabBox(
                     title="Graphs",
                     id = "tabGraphs",
