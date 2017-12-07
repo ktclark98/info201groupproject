@@ -60,11 +60,15 @@ ui <- dashboardPage(
                                 choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
+                  
+                  box(
+                    htmlOutput("picture"),
+                    uiOutput("common.name"),
+                    uiOutput("url")
+                  ),
+                  
                   box(
                     plotOutput("histPlot")
-                  ),
-                  box(
-                    htmlOutput("picture")
                   )
 
                 )
@@ -107,6 +111,15 @@ server <- function(input, output) {
     iso2 <- as.character(input$country)
     GetPie(iso2)
   })
+  
+  output$url <- renderUI({
+    tagList("Link to more information:", GetUrl(input$text))
+  })
+  
+  output$common.name <- renderText({
+    paste("Common Name: ", GetCommonName(input$text))
+  })
+  
 }
 
 shinyApp(ui, server)
