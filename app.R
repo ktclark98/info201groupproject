@@ -67,13 +67,6 @@ ui <- dashboardPage(
                     status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
-                  box(
-                    status = "primary",
-                    selectInput("checkGroup",
-                                label = h3("Select Information"),
-                                choices = list("Threats" = "threats", "Actions" = "action", "Habitat" = "habitat", "Historical Assessment" = "historical")
-                    )
-                  ),
                   tabBox(
                     title="Graphs",
                     id = "tabGraphs",
