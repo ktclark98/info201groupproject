@@ -119,7 +119,8 @@ ui <- dashboardPage(
                     a histogram is created. This histogram is used because our data sets for these topics gave us sentences as data describing
                     the issues. The histogram shows the most commonly occurring words or phrases that account for that topic. This can give
                     the readers ideas about the most prevalent issues for action that needs to be made for conservation, the general habitats
-                    of the animal, and the things threatening the animal. We also have created a line plot to show the how the endangerment
+                    of the animal, and the things threatening the animal. This histogram isn't always 100% effective because the most common words
+                    aren't always the most applicable to the topic.We also have created a line plot to show the how the endangerment
                     levels for the animal has changed over the years.")
                 )
               ),
