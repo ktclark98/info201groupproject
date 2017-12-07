@@ -1,4 +1,3 @@
-## app.R ##
 library(shiny)
 library(shinydashboard)
 library(plotly)
@@ -34,15 +33,27 @@ ui <- dashboardPage(
                 box(
                   selectInput("mapGroup",
                               label = h3("Select Information"),
-                              choices = list("Critically Endangered" = "cr")
+                              choices = list("Critically Endangered" = "CR",
+                                             "Endangered" = "EN",
+                                             "Extinct" = "EX",
+                                             "Extinct in the Wild" = "EW",
+                                             "Vulnerable" = "VU",
+                                             "Near Threatened" = "NT",
+                                             "Least Concern" = "LC")
                   )
                 ),
                 box(
-                  plotlyOutput('country.pie', height = 250)
+                  plotlyOutput('country.pie', height = 500)
                 ),
+
                 box(
                   plotlyOutput("worldMap", height = 500)
+                ),
+                box(
+                  title = "Notes:", status = "primary", solidHeader = TRUE, collapsible = TRUE,
+                  htmlOutput("paragraphcountry")
                 )
+
               )
       ),
       
@@ -60,7 +71,7 @@ ui <- dashboardPage(
                     status = "primary",
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
-                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
+                                choices = list("Threats" = "threats", "Actions" = "action", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
                   
@@ -106,13 +117,20 @@ server <- function(input, output) {
   })
   
   output$paragraph <- renderText({
-    "For the species page we have several different inputs of data. For the actions, habitats, and threats options
+    "For the species page, we have several different inputs of data. For the actions, habitats, and threats options
     a histogram is created. This histogram is used because our data sets for these topics gave us sentences as data describing
     the issues. The histogram shows the most commonly occurring words or phrases that account for that topic. This can give
     the readers ideas about the most prevalent issues for action that needs to be made for conservation, the general habitats
     of the animal, and the things threatening the animal. We also have created a line plot to show the how the endangerment
-    levels for the animal has changed over the years"
+    levels for the animal has changed over the years."
     
+  })
+  
+  output$paragraphcountry <- renderText ({
+    "For the country page, we put our focus on showing visitors what levels of endangerment are for any country. The pie chart shows 
+     the percentage of animals in each category depending on the country input. For example, if you put in US for the United States, it 
+     shows that 68% of the accounted species are under the least concern of endangerment, while only around 3% are considered extinct. 
+     We have also constructed a map that shows all the countries at once for any given endangerment level"
   })
   
   output$picture <- renderText({
@@ -121,7 +139,7 @@ server <- function(input, output) {
   })
   
   output$worldMap <- renderPlotly({
-    p
+    plot <- CategoryMap(input$mapGroup)
   })
   
   output$country.pie <- renderPlotly({
