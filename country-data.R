@@ -5,23 +5,6 @@
 library(dplyr)
 source("get-data.R")
 
-TotalCountry <- function() {
-  country.ep <- "/api/v3/country/list?token="
-  country <- AccessAPI(country.ep)
-  country.df <- country[[2]]
-  return(nrow(country.df))
-}
-
-country.count <- TotalCountry()
-
-TotalSpecies <- function() {
-  ep <- "/api/v3/speciescount?token="
-  species <- AccessAPI(ep)
-  return(species[[1]])
-}
-
-species.count <- TotalSpecies()
-
 # Given the endangered species category, pulls the count of that type of species
 # for all country in the RedList API and writes the resulting datafram into a 
 # csv file.
