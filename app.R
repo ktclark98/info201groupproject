@@ -10,6 +10,7 @@ source("country-map.R")
 source("selected-country-data.R")
 source("overtime-graphic.R")
 source("get-image.R")
+source("url-and-common-name.R")
 
 ui <- dashboardPage(
   skin = "purple",
@@ -17,7 +18,6 @@ ui <- dashboardPage(
   dashboardSidebar(
     sidebarMenu(
       menuItem("Your Country", tabName = "country", icon = icon("map-marker")),
-      menuItem("Location", tabName = "location", icon = icon("map")),
       menuItem("Species", tabName = "species", icon = icon("paw")),
       menuItem("About", tabName = "about", icon = icon("user-circle"))
     )
@@ -31,17 +31,15 @@ ui <- dashboardPage(
                 box(
                   textInput("country", label = h3("Enter Your Country's 2 Letter Code:"), value = "US")
                 ),
-                
+                box(
+                  selectInput("mapGroup",
+                              label = h3("Select Information"),
+                              choices = list("Critically Endangered" = "cr")
+                  )
+                ),
                 box(
                   plotlyOutput('country.pie', height = 250)
-                )
-              )
-      ),
-      
-      # Second tab content
-      tabItem(tabName = "location",
-              h2("Location"),
-              fluidRow(
+                ),
                 box(
                   plotlyOutput("worldMap", height = 500)
                 )
@@ -51,21 +49,30 @@ ui <- dashboardPage(
       tabItem(tabName = "species",
               h2("Species"),
               fluidRow(
-                box(
-                  textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
-                ),
-                box(
-                  selectInput("checkGroup",
-                              label = h3("Select Information"),
-                              choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
-                  )
-                ),
-                box(
-                  plotOutput("histPlot")
-                ),
-                box(
-                  htmlOutput("picture")
-                )
+                  box(
+                    status = "primary",
+                    textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
+                  ),
+                  box(
+                    status = "primary",
+                    selectInput("checkGroup",
+                                label = h3("Select Information"),
+                                choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
+                    )
+                  ),
+                  
+                  box(
+                    title = "Picture", status = "info", solidHeader = TRUE,
+                    htmlOutput("picture"),
+                    uiOutput("url")
+                  ),
+                  
+                  box(
+                    title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
+                    plotOutput("histPlot")
+                  ),
+                  
+                  valueBoxOutput("nameBox")
               )
       ),
       
@@ -95,7 +102,6 @@ server <- function(input, output) {
   output$picture <- renderText({
     src <- GetImageURL(input$text)
     c('<img src="', src, '" width="300px" height="300px">')  
-    # <img src="url", height=300,>
   })
   
   output$worldMap <- renderPlotly({
@@ -106,6 +112,18 @@ server <- function(input, output) {
     iso2 <- as.character(input$country)
     GetPie(iso2)
   })
+  
+  output$url <- renderUI({
+    tagList("Link to more information:", GetUrl(input$text))
+  })
+  
+  output$nameBox <- renderValueBox({
+    valueBox(
+      paste0(GetCommonName(input$text)), "Common Name", icon = icon("bug"),
+      color = "purple"
+    )
+  })
+  
 }
 
 shinyApp(ui, server)
