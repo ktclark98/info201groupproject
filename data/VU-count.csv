@@ -145,7 +145,7 @@
 145,MR,Mauritania,61
 146,YT,Mayotte,76
 147,RW,Rwanda,59
-148,RE,RŽunion,NA
+148,RE,R_union,NA
 149,SN,Senegal,90
 150,SL,Sierra Leone,131
 151,LS,Lesotho,14
@@ -163,7 +163,7 @@
 163,KM,Comoros,85
 164,CG,Congo,102
 165,CD,"Congo, The Democratic Republic of the",252
-166,CI,C™te d'Ivoire,NA
+166,CI,Cªte d'Ivoire,NA
 167,DJ,Djibouti,86
 168,ER,Eritrea,106
 169,ET,Ethiopia,95
@@ -194,9 +194,8 @@
 194,HK,Hong Kong,44
 195,KP,"Korea, Democratic People's Republic of",53
 196,KR,"Korea, Republic of",69
-197,PM,Saint Pierre and Miquelon,9
 198,MF,Saint Martin (French part),34
-199,BL,Saint BarthŽlemy,21
+199,BL,Saint Barth_lemy,21
 200,AS,American Samoa,78
 201,CK,Cook Islands,59
 202,PF,French Polynesia,92
@@ -222,7 +221,7 @@
 222,AN,Netherlands Antilles,NA
 223,EG,Egypt,133
 224,MU,Mauritius,133
-225,ST,Sao TomŽ and Principe,70
+225,ST,Sao Tom_ and Principe,70
 226,SC,Seychelles,188
 227,GQ,Equatorial Guinea,124
 228,ZA,South Africa,337
