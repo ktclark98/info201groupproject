@@ -49,21 +49,30 @@ ui <- dashboardPage(
               h2("Species"),
               fluidRow(
                   box(
+                    status = "primary",
                     textInput("text", label = h3("Enter Species Name below"), value = "Loxodonta africana")
                   ),
                   box(
+                    status = "primary",
                     selectInput("checkGroup",
                                 label = h3("Select Information"),
                                 choices = list("Actions" = "action", "Threats" = "threats", "Habitat" = "habitat", "Historical Assessment" = "historical")
                     )
                   ),
+                  
                   box(
+                    title = "Picture", status = "info", solidHeader = TRUE,
+                    htmlOutput("picture"),
+                    uiOutput("url")
+                  ),
+                  
+                  box(
+                    title = "Graph", status = "info", solidHeader = TRUE, collapsible = TRUE,
                     plotOutput("histPlot")
                   ),
-                  box(
-                    htmlOutput("picture")
-                  )
-                )
+                  
+                  valueBoxOutput("nameBox")
+              )
       ),
       
       tabItem(tabName = "about",
@@ -102,7 +111,18 @@ server <- function(input, output) {
     iso2 <- as.character(input$country)
     GetPie(iso2)
   })
+  
+  output$url <- renderUI({
+    tagList("Link to more information:", GetUrl(input$text))
+  })
+  
+  output$nameBox <- renderValueBox({
+    valueBox(
+      paste0(GetCommonName(input$text)), "Common Name", icon = icon("bug"),
+      color = "purple"
+    )
+  })
+  
 }
 
 shinyApp(ui, server)
-
